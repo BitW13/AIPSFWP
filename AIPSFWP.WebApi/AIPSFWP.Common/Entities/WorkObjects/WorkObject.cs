@@ -1,6 +1,4 @@
-﻿using AIPSFWP.Common.Entities.WorkTasks;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AIPSFWP.Common.Entities.WorkObjects
 {
@@ -12,7 +10,5 @@ namespace AIPSFWP.Common.Entities.WorkObjects
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-        public virtual List<WorkTask> WorkTasks { get; set; }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AIPSFWP.Common.Entities.Employees
+namespace AIPSFWP.WebApi.ViewModels
 {
-    public class Employee
+    public class IndexEditEmployeeViewModel
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -20,5 +19,13 @@ namespace AIPSFWP.Common.Entities.Employees
         public string Role { get; set; }
 
         public int? WorkObjectId { get; set; }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        public string MiddleName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
     }
 }

@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AIPSFWP.BLL\AIPSFWP.BLL.csproj" />
     <ProjectReference Include="..\AIPSFWP.Common\AIPSFWP.Common.csproj" />
+    <ProjectReference Include="..\AIPSFWP.DAL\AIPSFWP.DAL.csproj" />
   </ItemGroup>
 
 </Project>

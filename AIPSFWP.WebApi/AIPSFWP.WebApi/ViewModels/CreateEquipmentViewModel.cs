@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AIPSFWP.Common.Entities.Equipments
+namespace AIPSFWP.WebApi.ViewModels
 {
-    public class EquipmentData
+    public class CreateEquipmentViewModel
     {
-        [Key]
-        public int Id { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public string Description { get; set; }

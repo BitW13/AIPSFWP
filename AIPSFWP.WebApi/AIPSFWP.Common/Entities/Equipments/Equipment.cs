@@ -10,5 +10,7 @@ namespace AIPSFWP.Common.Entities.Equipments
         public string Name { get; set; }
 
         public int EquipmentDataId { get; set; }
+
+        public int? WorkObjectId { get; set; }
     }
 }

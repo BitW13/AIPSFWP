@@ -13,11 +13,5 @@ namespace AIPSFWP.Common.Entities
 
         [Required]
         public string Name { get; set; }
-
-        public virtual List<Employee> Employees { get; set; }
-
-        public virtual List<WorkObject> WorkObjects { get; set; }
-
-        public virtual List<Equipment> Equipments { get; set; }
     }
 }
