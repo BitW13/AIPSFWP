@@ -1,5 +1,6 @@
 ﻿using AIPSFWP.Common.Entities.WorkObjects;
 using AIPSFWP.DAL.Contexts;
+using AIPSFWP.DAL.Repositories.Interfaces.WorkObjects;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
