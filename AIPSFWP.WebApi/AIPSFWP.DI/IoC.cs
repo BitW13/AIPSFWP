@@ -57,7 +57,7 @@ namespace AIPSFWP.DI
             string connectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ProjectContext>(options =>
-                options.UseNpgsql(connectionString));
+                options.UseSqlServer(connectionString));
         }
     }
 }
