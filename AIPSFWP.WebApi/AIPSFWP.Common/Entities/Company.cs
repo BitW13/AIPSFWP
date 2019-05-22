@@ -1,10 +1,8 @@
 ﻿using AIPSFWP.Common.Entities.Employees;
 using AIPSFWP.Common.Entities.Equipments;
 using AIPSFWP.Common.Entities.WorkObjects;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace AIPSFWP.Common.Entities
 {

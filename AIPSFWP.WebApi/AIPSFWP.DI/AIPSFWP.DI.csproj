@@ -1,13 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\" />
-    <Folder Include="Repositories\Implementations\" />
-    <Folder Include="Repositories\Interfaces\" />
+    <ProjectReference Include="..\AIPSFWP.Common\AIPSFWP.Common.csproj" />
   </ItemGroup>
 
 </Project>
