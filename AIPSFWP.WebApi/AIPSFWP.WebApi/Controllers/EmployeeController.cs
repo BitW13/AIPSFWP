@@ -99,7 +99,7 @@ namespace AIPSFWP.WebApi.Controllers
 
             var newModel = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
 
-            return CreatedAtAction("CreateEmployee", newModel);
+            return Ok(newModel);
         }
 
         [HttpPut("{id}")]
