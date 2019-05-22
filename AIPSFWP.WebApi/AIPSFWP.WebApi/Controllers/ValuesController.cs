@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AIPSFWP.BLL.BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AIPSFWP.WebApi.Controllers
@@ -10,6 +11,7 @@ namespace AIPSFWP.WebApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IBusinessLogic
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
