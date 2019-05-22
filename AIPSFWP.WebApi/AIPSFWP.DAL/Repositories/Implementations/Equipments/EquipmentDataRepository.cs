@@ -1,9 +1,7 @@
 ﻿using AIPSFWP.Common.Entities.Equipments;
 using AIPSFWP.DAL.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AIPSFWP.DAL.Repositories.Implementations.Equipments

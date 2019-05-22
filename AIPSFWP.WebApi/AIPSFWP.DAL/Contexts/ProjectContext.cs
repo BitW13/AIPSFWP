@@ -4,9 +4,6 @@ using AIPSFWP.Common.Entities.Equipments;
 using AIPSFWP.Common.Entities.WorkObjects;
 using AIPSFWP.Common.Entities.WorkTasks;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AIPSFWP.DAL.Contexts
 {

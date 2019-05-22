@@ -1,9 +1,8 @@
 ﻿using AIPSFWP.Common.Entities.WorkTasks;
 using AIPSFWP.DAL.Contexts;
+using AIPSFWP.DAL.Repositories.Interfaces.WorkTasks;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AIPSFWP.DAL.Repositories.Implementations.WorkTasks
