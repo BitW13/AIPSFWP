@@ -121,7 +121,7 @@ namespace AIPSFWP.WebApi.Controllers
             return Ok(model);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             Employee employee = await db.Employees.GetItemByIdAsync(id);
