@@ -24,14 +24,15 @@ export class EmployeeEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id']
     });
-    this.service.getItem(this.item.id).subscribe((data: Employee) => {
+    this.service.getItem(this.id).subscribe((data: Employee) => {
       this.item = data;  
     });
   }
 
   edit(){
-    this.service.updateItem(this.item);
-    this.loadItem();
+    this.service.updateItem(this.item).subscribe((data: Employee) => {
+      this.loadItem();  
+    });
   }
 
   cancel(){

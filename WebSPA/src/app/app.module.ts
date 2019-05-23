@@ -26,6 +26,8 @@ import { WorkObjectAddComponent } from './workObjects/work-object-add/work-objec
 import { WorkObjectEditComponent } from './workObjects/work-object-edit/work-object-edit.component';
 import { WorkObjectDetailsComponent } from './workObjects/work-object-details/work-object-details.component';
 import { WorkObjectService } from './workObjects/work-object.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { WorkObjectService } from './workObjects/work-object.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [EmployeeService, EquipmentService, WorkTaskService, WorkObjectService],
   bootstrap: [AppComponent]

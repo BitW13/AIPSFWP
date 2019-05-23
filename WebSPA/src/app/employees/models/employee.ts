@@ -16,7 +16,7 @@ export class Employee {
 
         public firstName?: string,
 
-        public midlleName?: string,
+        public middleName ?: string,
 
         public lastName?: string
     ) { }

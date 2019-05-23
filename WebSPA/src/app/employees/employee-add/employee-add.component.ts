@@ -22,8 +22,9 @@ export class EmployeeAddComponent implements OnInit {
   }
 
   add(){
-    this.service.createItem(this.item);
-    this.loadItem();
+    this.service.createItem(this.item).subscribe((data: Employee) => {
+      this.loadItem();  
+    });
   }
 
   cancel(){

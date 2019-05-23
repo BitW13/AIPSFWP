@@ -7,7 +7,7 @@ import { Employee } from './models/employee';
 })
 export class EmployeeService {
 
-  private url = "http://localhost:64345/api/employees/";
+  private url = "https://aipsfwpwebapi20190523120052.azurewebsites.net/api/employee/";
   
   constructor(private http: HttpClient) { }
 
