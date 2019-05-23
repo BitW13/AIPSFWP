@@ -138,6 +138,8 @@ namespace AIPSFWP.WebApi.Controllers
                 return BadRequest();
             }
 
+            await db.Employees.DeleteAsync(employee.Id);
+
             var model = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
 
             if(model == null)
