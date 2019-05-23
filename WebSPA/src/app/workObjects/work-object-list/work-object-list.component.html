@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="card" style="width: 18rem;"
+    *ngFor = 'let item of items'>
+      <img src="http://www.obltv.ru/upload/resize_cache/iblock/ea3/690_6900_1/cat.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{item.Name}}</h5>
+        <p class="card-text">{{item.description}}</p>
+        <button class="btn btn-outline-warning" (click)="deleteItem(item)">Удалить</button>
+        <a class="btn btn-primary" routerLink="/workObjects/work-object-edit/{{item.id}}">Изменить</a>
+      </div>
+    </div>
+  </div>
+</div>
