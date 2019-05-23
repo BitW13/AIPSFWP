@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AIPSFWP.WebApi.ViewModels
+﻿namespace AIPSFWP.WebApi.ViewModels
 {
     public class CreateWorkObjectViewModel
     {

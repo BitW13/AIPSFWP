@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AIPSFWP.BLL.BusinessLogic;
+﻿using AIPSFWP.BLL.BusinessLogic;
 using AIPSFWP.Common.Entities.Employees;
 using AIPSFWP.WebApi.ViewModels;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AIPSFWP.WebApi.Controllers
 {
@@ -17,7 +14,7 @@ namespace AIPSFWP.WebApi.Controllers
     {
         private readonly IMapper mapper;
         private readonly IBusinessLogic db;
-        
+
         public EmployeeController(IBusinessLogic db, IMapper mapper)
         {
             this.db = db;
@@ -27,11 +24,11 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<IndexEditEmployeeViewModel>> Get()
         {
-            var employees =  await db.Employees.GetAllAsync();
+            var employees = await db.Employees.GetAllAsync();
 
             List<IndexEditEmployeeViewModel> models = new List<IndexEditEmployeeViewModel>();
 
-            foreach(var employee in employees)
+            foreach (var employee in employees)
             {
                 var employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
 
@@ -57,21 +54,21 @@ namespace AIPSFWP.WebApi.Controllers
         {
             var employee = await db.Employees.GetItemByIdAsync(id);
 
-            if(employee == null)
+            if (employee == null)
             {
                 return NotFound();
             }
 
             var employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
 
-            if(employeeData == null)
+            if (employeeData == null)
             {
                 return NotFound();
             }
 
             var model = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
 
-            if(model == null)
+            if (model == null)
             {
                 return NotFound();
             }
@@ -82,7 +79,7 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateEmployeeViewModel model)
         {
-            if(model == null)
+            if (model == null)
             {
                 return BadRequest();
             }
@@ -105,7 +102,7 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, IndexEditEmployeeViewModel model)
         {
-            if(id != model.Id)
+            if (id != model.Id)
             {
                 return BadRequest();
             }
@@ -126,14 +123,14 @@ namespace AIPSFWP.WebApi.Controllers
         {
             Employee employee = await db.Employees.GetItemByIdAsync(id);
 
-            if(employee == null)
+            if (employee == null)
             {
                 return BadRequest();
             }
 
             EmployeeData employeeData = await db.EmployeesDatas.DeleteAsync(employee.EmployeeDataId);
 
-            if(employeeData == null)
+            if (employeeData == null)
             {
                 return BadRequest();
             }
@@ -142,7 +139,7 @@ namespace AIPSFWP.WebApi.Controllers
 
             var model = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
 
-            if(model == null)
+            if (model == null)
             {
                 return BadRequest();
             }
@@ -154,7 +151,7 @@ namespace AIPSFWP.WebApi.Controllers
         private IndexEditEmployeeViewModel ConvertEmployeeAndEmployeeDataToIndexViewModel(Employee employee, EmployeeData employeeData)
         {
 
-            if(employee == null || employeeData == null)
+            if (employee == null || employeeData == null)
             {
                 return null;
             }
