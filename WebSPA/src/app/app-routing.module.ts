@@ -49,6 +49,20 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'workTasks',
+    component: WorkTaskComponent,
+    children:[
+      {
+        path: 'work-task-list',
+        component: WorkTaskListComponent
+      },
+      {
+        path: 'work-task-edit/:id',
+        component: WorkTaskEditComponent
+      }
+    ]
+  },
+  {
     path: 'workObjects',
     component: WorkObjectComponent,
     children: [

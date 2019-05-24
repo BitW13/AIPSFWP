@@ -35,9 +35,9 @@ export class WorkObjectDetailsComponent implements OnInit {
   isNewWorkTask: boolean;
 
   constructor(private route: ActivatedRoute,
-    private serviceOfEmployee: EmployeeService,
-    private serviceOfEquipment: EquipmentService,
-    private serviceOfWorkTask: WorkTaskService) { 
+    private serviceOfEmployees: EmployeeService,
+    private serviceOfEquipments: EquipmentService,
+    private serviceOfWorkTasks: WorkTaskService) { 
       this.listOfEmployees = new Array<Employee>();
       this.listOfEquipments = new Array<Equipment>();
       this.listofWorkTasks = new Array<WorkTask>();
@@ -51,13 +51,13 @@ export class WorkObjectDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.workObjectId = params['id']
     });
-    this.serviceOfEmployee.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
+    this.serviceOfEmployees.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
       this.listOfEmployees = data;  
     });
-    this.serviceOfEquipment.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Equipment[]) => {
+    this.serviceOfEquipments.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Equipment[]) => {
       this.listOfEquipments = data;  
     });
-    this.serviceOfWorkTask.getItemsByWorkObjectId(this.workObjectId).subscribe((data: WorkTask[]) => {
+    this.serviceOfWorkTasks.getItemsByWorkObjectId(this.workObjectId).subscribe((data: WorkTask[]) => {
       this.listofWorkTasks = data;  
     });
   }
@@ -99,5 +99,43 @@ export class WorkObjectDetailsComponent implements OnInit {
     this.editWorkTask = new WorkTask();
     this.listofWorkTasks.push(this.editWorkTask);
     this.isNewWorkTask = true;
+  }
+
+  cancelEmployee() {
+    if (this.isNewEmployee) {
+        this.listOfEmployees.pop();
+        this.isNewEmployee = false;
+    }
+    this.editEmployee = null;
+  }
+  cancelEquipment() {
+    if (this.isNewEquipment) {
+        this.listOfEquipments.pop();
+        this.isNewEquipment = false;
+    }
+    this.editEquipment = null;
+  }
+  cancelWorkTask() {
+    if (this.isNewWorkTask) {
+        this.listofWorkTasks.pop();
+        this.isNewWorkTask = false;
+    }
+    this.editWorkTask = null;
+  }
+
+  deleteEmployee(employee: Employee) {
+    this.serviceOfEmployees.deleteItem(employee.id).subscribe(data => {
+        this.loadItems();
+    });
+  }
+  deleteEquipment(equipment: Equipment) {
+    this.serviceOfEquipments.deleteItem(equipment.id).subscribe(data => {
+        this.loadItems();
+    });
+  }
+  deleteWorkTask(workTask: WorkTask) {
+    this.serviceOfWorkTasks.deleteItem(workTask.id).subscribe(data => {
+        this.loadItems();
+    });
   }
 }
