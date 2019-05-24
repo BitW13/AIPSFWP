@@ -70,17 +70,17 @@ export class WorkObjectDetailsComponent implements OnInit {
     }
   }
   loadEquipmentTemplate(equipment: Equipment) {
-    if (this.editedUser && this.editedUser.Id == user.Id) {
-        return this.editTemplate;
+    if (this.editEquipment && this.editEquipment.id == equipment.id) {
+        return this.editEquipment;
     } else {
-        return this.readOnlyTemplate;
+        return this.equipmentEdit;
     }
   }
-  loadTemplate(user: User) {
-    if (this.editedUser && this.editedUser.Id == user.Id) {
-        return this.editTemplate;
+  loadTemplate(workTask: WorkTask) {
+    if (this.editWorkTask && this.editWorkTask.id == workTask.id) {
+        return this.editWorkTask;
     } else {
-        return this.readOnlyTemplate;
+        return this.workTaskEdit;
     }
   }
 
