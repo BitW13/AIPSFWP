@@ -1,14 +1,32 @@
-<a class="btn btn-outline-primary" routerLink="/workObjects/work-object-list">Назад</a>
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-3">
-        <app-employee-add></app-employee-add>
-      </div>
-      <div class="col-3">
-        <app-equipment-add></app-equipment-add>
-      </div>
-      <div class="col-6">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+<div class="btn-group">
+  <a class="btn btn-outline-primary" routerLink="/workObjects/work-object-list">Назад</a>
+  <button type="button" class="btn btn-outline-success">Добавить сотрудника на объект</button>
+  <button type="button" class="btn btn-outline-success">Добавить оборудование на объект</button>
+  <button type="button" class="btn btn-outline-success">Добавить задачу на объект</button>
+</div>
+<div>
+  <div>
+    <p *ngFor='let employee of listOfEmployees'>
+      Сотрудник
+      <ng-template [ngTemplateOutlet]="loadEmployeeTemplate(employee)" 
+        [ngTemplateOutletContext]="{ $implicit: employee}">
+      </ng-template>
+    </p>
+  </div>
+  <div>
+    <p *ngFor='let equipment of listOfEquipments'>
+      Сотрудник
+      <ng-template [ngTemplateOutlet]="loadEquipmentTemplate(equipment)" 
+        [ngTemplateOutletContext]="{ $implicit: equipment}">
+      </ng-template>
+    </p>
+  </div>
+  <div>
+    <p *ngFor='let workTask of listOfWorkTasks'>
+      Сотрудник
+      <ng-template [ngTemplateOutlet]="loadWorkTaskTemplate(workTask)" 
+        [ngTemplateOutletContext]="{ $implicit: workTask}">
+      </ng-template>
+    </p>
+  </div>
 </div>

@@ -30,4 +30,8 @@ export class WorkTaskService {
   deleteItem(id: number){
     return this.http.delete(this.url + id);
   }
+
+  getItemsByWorkObjectId(id: number){
+    return this.http.get(this.url + '/byworkobjectid/' + id);
+  }
 }
