@@ -35,9 +35,9 @@ export class WorkObjectDetailsComponent implements OnInit {
   isNewWorkTask: boolean;
 
   constructor(private route: ActivatedRoute,
-    private serviceOfEmployee: EmployeeService,
-    private serviceOfEquipment: EquipmentService,
-    private serviceOfWorkTask: WorkTaskService) { 
+    private serviceOfEmployees: EmployeeService,
+    private serviceOfEquipments: EquipmentService,
+    private serviceOfWorkTasks: WorkTaskService) { 
       this.listOfEmployees = new Array<Employee>();
       this.listOfEquipments = new Array<Equipment>();
       this.listofWorkTasks = new Array<WorkTask>();
@@ -51,13 +51,13 @@ export class WorkObjectDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.workObjectId = params['id']
     });
-    this.serviceOfEmployee.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
+    this.serviceOfEmployees.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
       this.listOfEmployees = data;  
     });
-    this.serviceOfEquipment.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Equipment[]) => {
+    this.serviceOfEquipments.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Equipment[]) => {
       this.listOfEquipments = data;  
     });
-    this.serviceOfWorkTask.getItemsByWorkObjectId(this.workObjectId).subscribe((data: WorkTask[]) => {
+    this.serviceOfWorkTasks.getItemsByWorkObjectId(this.workObjectId).subscribe((data: WorkTask[]) => {
       this.listofWorkTasks = data;  
     });
   }
@@ -113,13 +113,13 @@ export class WorkObjectDetailsComponent implements OnInit {
 
   saveEmployee(){
     if(this.isNewEmployee) {
-      this.serviceOfEmployee.createItem(this.editedEmployee).subscribe(data => {
+      this.serviceOfEmployees.createItem(this.editedEmployee).subscribe(data => {
         this.loadItems();
       });
       this.isNewEmployee = false;
       this.editedEmployee = null;
     } else {
-      this.serviceOfEmployee.updateItem(this.editedEmployee).subscribe(data => {
+      this.serviceOfEmployees.updateItem(this.editedEmployee).subscribe(data => {
         this.loadItems();
       });
       this.editedEmployee = null;
@@ -127,18 +127,33 @@ export class WorkObjectDetailsComponent implements OnInit {
   }
   saveEquipment(){
     if(this.isNewEquipment) {
-      this.serviceOfEquipment.createItem(this.editedEquipment).subscribe(data => {
+      this.serviceOfEquipments.createItem(this.editedEquipment).subscribe(data => {
         this.loadItems();
       });
       this.isNewEquipment = false;
       this.editedEquipment = null;
     } else {
-      this.serviceOfEquipment.updateItem(this.editedEquipment).subscribe(data => {
+      this.serviceOfEquipments.updateItem(this.editedEquipment).subscribe(data => {
         this.loadItems();
       });
       this.editedEquipment = null;
     }
-
+  }
+  saveWorkTask(){
+    if(this.isNewWorkTask) {
+      this.serviceOfWorkTasks.createItem(this.editedWorkTask).subscribe(data => {
+        this.loadItems();
+      });
+      this.isNewWorkTask = false;
+      this.editedWorkTask = null;
+    } else {
+      this.serviceOfWorkTasks.updateItem(this.editedWorkTask).subscribe(data => {
+        this.loadItems();
+      });
+      this.editedWorkTask = null;
+    }
+  }
+  
   cancelEmployee() {
     if (this.isNewEmployee) {
         this.listOfEmployees.pop();
@@ -175,20 +190,5 @@ export class WorkObjectDetailsComponent implements OnInit {
     this.serviceOfWorkTasks.deleteItem(workTask.id).subscribe(data => {
         this.loadItems();
     });
-  }
-  }
-  saveWorkTask(){
-    if(this.isNewWorkTask) {
-      this.serviceOfWorkTask.createItem(this.editedWorkTask).subscribe(data => {
-        this.loadItems();
-      });
-      this.isNewWorkTask = false;
-      this.editedWorkTask = null;
-    } else {
-      this.serviceOfWorkTask.updateItem(this.editedWorkTask).subscribe(data => {
-        this.loadItems();
-      });
-      this.editedWorkTask = null;
-    }
   }
 }
