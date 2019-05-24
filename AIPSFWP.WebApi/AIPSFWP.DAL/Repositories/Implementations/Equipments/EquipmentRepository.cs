@@ -3,6 +3,7 @@ using AIPSFWP.DAL.Contexts;
 using AIPSFWP.DAL.Repositories.Interfaces.Equipments;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AIPSFWP.DAL.Repositories.Implementations.Equipments
@@ -54,6 +55,13 @@ namespace AIPSFWP.DAL.Repositories.Implementations.Equipments
         public async Task<Equipment> GetItemByIdAsync(int id)
         {
             return await db.Equipments.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<Equipment>> GetItemsByWorkObjectIdAsync(int id)
+        {
+            var items = (await GetAllAsync()).ToList();
+
+            return items.Where(x => x.WorkObjectId == id);
         }
 
         public async Task UpdateAsync(Equipment item)

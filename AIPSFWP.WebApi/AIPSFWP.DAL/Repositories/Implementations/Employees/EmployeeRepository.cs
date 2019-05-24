@@ -3,6 +3,7 @@ using AIPSFWP.DAL.Contexts;
 using AIPSFWP.DAL.Repositories.Interfaces.Employees;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AIPSFWP.DAL.Repositories.Implementations.Employees
@@ -59,6 +60,13 @@ namespace AIPSFWP.DAL.Repositories.Implementations.Employees
         {
             db.Entry(item).State = EntityState.Modified;
             await db.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Employee>> GetItemsByWorkObjectIdAsync(int id)
+        {
+            var items = (await GetAllAsync()).ToList();
+
+            return items.Where(x => x.WorkObjectId == id);
         }
     }
 }

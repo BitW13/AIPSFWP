@@ -40,6 +40,11 @@ namespace AIPSFWP.BLL.Services.Implementations.Employees
             return await db.GetItemByIdAsync(id);
         }
 
+        public async Task<IEnumerable<Employee>> GetItemsByWorkObjectIdAsync(int id)
+        {
+            return await db.GetItemsByWorkObjectIdAsync(id);
+        }
+
         public async Task UpdateAsync(Employee item)
         {
             await db.UpdateAsync(item);

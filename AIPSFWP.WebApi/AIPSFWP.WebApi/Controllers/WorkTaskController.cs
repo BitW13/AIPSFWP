@@ -21,19 +21,27 @@ namespace AIPSFWP.WebApi.Controllers
             this.mapper = mapper;
         }
 
+        [HttpGet("byworkobjectid/{id}")]
+        public async Task<IEnumerable<IndexEditWorkTaskViewModel>> GetByWorkObjectId(int id)
+        {
+            if (id <= 0)
+            {
+                return null;
+            }
+
+            var workTasks = await db.WorkTasks.GetItemsByWorkObjectIdAsync(id);
+
+            List<IndexEditWorkTaskViewModel> models = mapper.Map<List<IndexEditWorkTaskViewModel>>(workTasks);
+
+            return models;
+        }
+
         [HttpGet]
         public async Task<IEnumerable<IndexEditWorkTaskViewModel>> Get()
         {
             var workTasks = await db.WorkTasks.GetAllAsync();
 
-            var models = new List<IndexEditWorkTaskViewModel>();
-
-            foreach (var v in workTasks)
-            {
-                var workTask = await db.WorkTasks.GetItemByIdAsync(v.Id);
-
-                models.Add(mapper.Map<IndexEditWorkTaskViewModel>(v));
-            }
+            List<IndexEditWorkTaskViewModel> models = mapper.Map<List<IndexEditWorkTaskViewModel>>(workTasks);
 
             return models;
         }

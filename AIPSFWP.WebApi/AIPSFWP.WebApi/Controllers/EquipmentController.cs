@@ -21,6 +21,28 @@ namespace AIPSFWP.WebApi.Controllers
             this.mapper = mapper;
         }
 
+        [HttpGet("byworkobjectid/{id}")]
+        public async Task<IEnumerable<IndexEditEquipmentViewModel>> GetByWorkObjectId(int id)
+        {
+            if (id <= 0)
+            {
+                return null;
+            }
+
+            var equipments = await db.Equipments.GetItemsByWorkObjectIdAsync(id);
+
+            List<IndexEditEquipmentViewModel> models = new List<IndexEditEquipmentViewModel>();
+
+            foreach (var equipment in equipments)
+            {
+                var equipmentData = await db.EquipmentsDatas.GetItemByIdAsync(equipment.EquipmentDataId);
+
+                models.Add(ConvertEquipmentAndEquipmentDataToIndexViewModel(equipment, equipmentData));
+            }
+
+            return models;
+        }
+
         [HttpGet]
         public async Task<IEnumerable<IndexEditEquipmentViewModel>> Get()
         {
@@ -32,15 +54,7 @@ namespace AIPSFWP.WebApi.Controllers
             {
                 var equipmentData = await db.EquipmentsDatas.GetItemByIdAsync(equipment.EquipmentDataId);
 
-                models.Add(new IndexEditEquipmentViewModel
-                {
-                    Id = equipment.Id,
-                    EquipmentDataId = equipmentData.Id,
-                    Name = equipment.Name,
-                    Description = equipmentData.Description,
-                    Number = equipmentData.Number,
-                    WorkObjectId = equipment.WorkObjectId
-                });
+                models.Add(ConvertEquipmentAndEquipmentDataToIndexViewModel(equipment, equipmentData));
             }
 
             return models;

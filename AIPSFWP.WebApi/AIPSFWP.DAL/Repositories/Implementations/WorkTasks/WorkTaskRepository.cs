@@ -3,6 +3,7 @@ using AIPSFWP.DAL.Contexts;
 using AIPSFWP.DAL.Repositories.Interfaces.WorkTasks;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AIPSFWP.DAL.Repositories.Implementations.WorkTasks
@@ -54,6 +55,13 @@ namespace AIPSFWP.DAL.Repositories.Implementations.WorkTasks
         public async Task<WorkTask> GetItemByIdAsync(int id)
         {
             return await db.WorkTasks.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<WorkTask>> GetItemsByWorkObjectIdAsync(int id)
+        {
+            var items = (await GetAllAsync()).ToList();
+
+            return items.Where(x => x.WorkObjectId == id);
         }
 
         public async Task UpdateAsync(WorkTask item)

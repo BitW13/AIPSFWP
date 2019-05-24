@@ -21,6 +21,28 @@ namespace AIPSFWP.WebApi.Controllers
             this.mapper = mapper;
         }
 
+        [HttpGet("byworkobjectid/{id}")]
+        public async Task<IEnumerable<IndexEditEmployeeViewModel>> GetByWorkObjectId(int id)
+        {
+            if(id <= 0)
+            {
+                return null;
+            }
+
+            var employees = await db.Employees.GetItemsByWorkObjectIdAsync(id);
+
+            List<IndexEditEmployeeViewModel> models = new List<IndexEditEmployeeViewModel>();
+
+            foreach (var employee in employees)
+            {
+                var employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
+
+                models.Add(ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData));
+            }
+
+            return models;
+        }
+
         [HttpGet]
         public async Task<IEnumerable<IndexEditEmployeeViewModel>> Get()
         {
@@ -32,18 +54,7 @@ namespace AIPSFWP.WebApi.Controllers
             {
                 var employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
 
-                models.Add(new IndexEditEmployeeViewModel
-                {
-                    Id = employee.Id,
-                    EmployeeDataId = employeeData.Id,
-                    FirstName = employeeData.FirstName,
-                    MiddleName = employeeData.MiddleName,
-                    LastName = employeeData.LastName,
-                    Login = employee.Login,
-                    Password = employee.Password,
-                    Role = employee.Role,
-                    WorkObjectId = employee.WorkObjectId
-                });
+                models.Add(ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData));
             }
 
             return models;
