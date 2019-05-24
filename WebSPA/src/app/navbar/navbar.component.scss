@@ -8,10 +8,6 @@ $color: #d94f5c;
   position: fixed;
   z-index: 1010;
 
-  @media (max-width: 550px){
-    position: relative;
-  }
-
   .navbar-brand{
     transition: all 0.3s ease;
     font-size: 2.2rem; //2.2rem
@@ -38,8 +34,16 @@ $color: #d94f5c;
         }
       }    
 
+      &:nth-child(1){
+        min-width: 177px;
+      }
+
+      &:nth-child(2){
+        min-width: 217px;
+      }
+
       &:last-child{
-        min-width: 218px;
+        min-width: 221px;
       }
 
       &::before{

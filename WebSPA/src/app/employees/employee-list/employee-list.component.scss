@@ -1,12 +1,11 @@
-.container-fluid{
+.container{
   width: 95vw;
   .row{
-    justify-content: space-around;
-    margin: 0 0;
-    // margin-left: 10vw;
-    // width: 60vw;
-    @media (max-width: 551px) {
-      margin-top: 0; 
+    justify-content: space-around !important;
+    margin: 7px 0;    
+
+    .card{
+      margin: 1vmin 1vmin;
     }
   }
 }
