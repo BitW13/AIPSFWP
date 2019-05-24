@@ -62,7 +62,7 @@ const routes: Routes = [
       },
       {
         path: 'work-object-details/:id',
-        component: WorkObjectDetailsComponent,
+        component: WorkObjectDetailsComponent/*,
         children: [
           {
             path: 'workTasks',
@@ -78,7 +78,7 @@ const routes: Routes = [
               }
             ]
           }
-        ]
+        ]*/
       }
     ]
   }

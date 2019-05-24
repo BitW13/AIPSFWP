@@ -2,13 +2,12 @@
   <div class="row">
     <div class="card" style="width: 18rem;"
     *ngFor = 'let item of items'>
-      <img src="http://www.obltv.ru/upload/resize_cache/iblock/ea3/690_6900_1/cat.jpg" class="card-img-top">
+      <img src="https://img11.postila.ru/resize?w=660&src=%2Fdata%2F88%2F58%2Fcb%2F9b%2F8858cb9b026ed9d5864196f70c75af506f0ccbf88839b621487395c86e99e962.jpg" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{item.number}}</h5>
+        <p class="card-text">{{item.name}}</p>
         <p class="card-text">{{item.description}}</p>
-        <p class="card-text">Пароль сотрудника - {{item.login}}</p>
-        <p class="card-text">Должность сотрудника - {{item.role}}</p>
-        <button class="btn btn-outline-warning" (click)="deleteItem(item)">Удалить</button>
+        <button class="btn btn-outline-warning" (click)="delete(item)">Удалить</button>
         <a class="btn btn-primary" routerLink="/equipments/equipment-edit/{{item.id}}">Изменить</a>
       </div>
     </div>
