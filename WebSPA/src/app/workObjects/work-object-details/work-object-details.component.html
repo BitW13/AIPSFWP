@@ -4,6 +4,12 @@
   <button type="button" class="btn btn-outline-success">Добавить оборудование на объект</button>
   <button type="button" class="btn btn-outline-success">Добавить задачу на объект</button>
 </div>
+<div class="btn-group">
+  <a class="btn btn-outline-primary" routerLink="/workObjects/work-object-list">Назад</a>
+  <button type="button" class="btn btn-outline-success">Выбрать сотрудника на объект</button>
+  <button type="button" class="btn btn-outline-success">Выбрать оборудование на объект</button>
+  <button type="button" class="btn btn-outline-success">Выбрать задачу на объект</button>
+</div>
 <div>
   <div>
     <p *ngFor='let employee of listOfEmployees'>
@@ -30,3 +36,16 @@
     </p>
   </div>
 </div>
+
+
+<ng-template #employeeRead let-employee>
+  {{employee.firstName}}
+</ng-template>
+
+<ng-template #equipmentRead let-equipment>
+  {{equipment.name}}
+</ng-template>
+
+<ng-template #workTaskRead let-workTask>
+  <p>{{workTask.name}}</p>
+</ng-template>

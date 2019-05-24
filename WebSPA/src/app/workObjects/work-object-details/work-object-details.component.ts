@@ -138,6 +138,44 @@ export class WorkObjectDetailsComponent implements OnInit {
       });
       this.editedEquipment = null;
     }
+
+  cancelEmployee() {
+    if (this.isNewEmployee) {
+        this.listOfEmployees.pop();
+        this.isNewEmployee = false;
+    }
+    this.editEmployee = null;
+  }
+  cancelEquipment() {
+    if (this.isNewEquipment) {
+        this.listOfEquipments.pop();
+        this.isNewEquipment = false;
+    }
+    this.editEquipment = null;
+  }
+  cancelWorkTask() {
+    if (this.isNewWorkTask) {
+        this.listofWorkTasks.pop();
+        this.isNewWorkTask = false;
+    }
+    this.editWorkTask = null;
+  }
+
+  deleteEmployee(employee: Employee) {
+    this.serviceOfEmployees.deleteItem(employee.id).subscribe(data => {
+        this.loadItems();
+    });
+  }
+  deleteEquipment(equipment: Equipment) {
+    this.serviceOfEquipments.deleteItem(equipment.id).subscribe(data => {
+        this.loadItems();
+    });
+  }
+  deleteWorkTask(workTask: WorkTask) {
+    this.serviceOfWorkTasks.deleteItem(workTask.id).subscribe(data => {
+        this.loadItems();
+    });
+  }
   }
   saveWorkTask(){
     if(this.isNewWorkTask) {
