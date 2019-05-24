@@ -88,7 +88,7 @@ namespace AIPSFWP.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateEquipmentViewModel model)
+        public async Task<IActionResult> Post([FromBody] CreateEquipmentViewModel model)
         {
             if (model == null)
             {
@@ -111,7 +111,7 @@ namespace AIPSFWP.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, IndexEditEquipmentViewModel model)
+        public async Task<IActionResult> Put(int id, [FromBody] IndexEditEquipmentViewModel model)
         {
             if (id != model.Id)
             {

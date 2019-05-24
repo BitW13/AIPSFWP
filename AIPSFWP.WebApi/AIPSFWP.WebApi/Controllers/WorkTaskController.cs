@@ -82,7 +82,7 @@ namespace AIPSFWP.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, IndexEditEmployeeViewModel model)
+        public async Task<IActionResult> Put(int id, [FromBody]IndexEditEmployeeViewModel model)
         {
             if (id != model.Id)
             {

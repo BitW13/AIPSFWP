@@ -47,7 +47,7 @@ namespace AIPSFWP.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateWorkObjectViewModel model)
+        public async Task<IActionResult> Post([FromBody] CreateWorkObjectViewModel model)
         {
             if (model == null)
             {
@@ -64,7 +64,7 @@ namespace AIPSFWP.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, IndexEditWorkObjectViewModel model)
+        public async Task<IActionResult> Put(int id, [FromBody] IndexEditWorkObjectViewModel model)
         {
             if (id != model.Id)
             {
