@@ -19,19 +19,19 @@ export class WorkObjectDetailsComponent implements OnInit {
   @ViewChild('employeeRead') employeeRead: TemplateRef<any>;
   @ViewChild('employeeEdit') employeeEdit: TemplateRef<any>;
   listOfEmployees: Array<Employee>;
-  editEmployee: Employee;
+  editedEmployee: Employee;
   isNewEmployee: boolean;
 
   @ViewChild('equipmentRead') equipmentRead: TemplateRef<any>;
   @ViewChild('equipmentEdit') equipmentEdit: TemplateRef<any>;
   listOfEquipments: Array<Equipment>;
-  editEquipment: Equipment;
+  editedEquipment: Equipment;
   isNewEquipment: boolean;
 
   @ViewChild('workTaskRead') workTaskRead: TemplateRef<any>;
   @ViewChild('workTaskEdit') workTaskEdit: TemplateRef<any>;
   listofWorkTasks: Array<WorkTask>;
-  editWorkTask: WorkTask;
+  editedWorkTask: WorkTask;
   isNewWorkTask: boolean;
 
   constructor(private route: ActivatedRoute,
@@ -63,21 +63,21 @@ export class WorkObjectDetailsComponent implements OnInit {
   }
 
   loadEmployeeTemplate(employee: Employee) {
-    if (this.editEmployee && this.editEmployee.id == employee.id) {
-        return this.editEmployee;
+    if (this.editedEmployee && this.editedEmployee.id == employee.id) {
+        return this.editedEmployee;
     } else {
         return this.employeeEdit;
     }
   }
   loadEquipmentTemplate(equipment: Equipment) {
-    if (this.editEquipment && this.editEquipment.id == equipment.id) {
-        return this.editEquipment;
+    if (this.editedEquipment && this.editedEquipment.id == equipment.id) {
+        return this.editedEquipment;
     } else {
         return this.equipmentEdit;
     }
   }
   loadTemplate(workTask: WorkTask) {
-    if (this.editWorkTask && this.editWorkTask.id == workTask.id) {
+    if (this.editedWorkTask && this.editedWorkTask.id == workTask.id) {
         return this.editWorkTask;
     } else {
         return this.workTaskEdit;
@@ -85,19 +85,72 @@ export class WorkObjectDetailsComponent implements OnInit {
   }
 
   addEmployee(){
-    this.editEmployee = new Equipment();
-    this.listOfEmployees.push(this.editEmployee);
+    this.editedEmployee = new Equipment();
+    this.listOfEmployees.push(this.editedEmployee);
     this.isNewEmployee = true;
   }
 
   addEquipment(){
-    this.editEquipment = new Equipment();
-    this.listOfEquipments.push(this.editEquipment);
+    this.editedEquipment = new Equipment();
+    this.listOfEquipments.push(this.editedEquipment);
     this.isNewEquipment = true;
   }
   addWorkTask(){
-    this.editWorkTask = new WorkTask();
-    this.listofWorkTasks.push(this.editWorkTask);
+    this.editedWorkTask = new WorkTask();
+    this.listofWorkTasks.push(this.editedWorkTask);
     this.isNewWorkTask = true;
+  }
+
+  editEmployee(employee: Employee){
+    this.editedEmployee = employee;
+  }
+  editEquipment(equipment: Equipment){
+    this.editedEquipment = equipment;
+  }
+  editWorkTask(workTask: WorkTask){
+    this.editedWorkTask = workTask;
+  }
+
+  saveEmployee(){
+    if(this.isNewEmployee) {
+      this.serviceOfEmployee.createItem(this.editedEmployee).subscribe(data => {
+        this.loadItems();
+      });
+      this.isNewEmployee = false;
+      this.editedEmployee = null;
+    } else {
+      this.serviceOfEmployee.updateItem(this.editedEmployee).subscribe(data => {
+        this.loadItems();
+      });
+      this.editedEmployee = null;
+    }
+  }
+  saveEquipment(){
+    if(this.isNewEquipment) {
+      this.serviceOfEquipment.createItem(this.editedEquipment).subscribe(data => {
+        this.loadItems();
+      });
+      this.isNewEquipment = false;
+      this.editedEquipment = null;
+    } else {
+      this.serviceOfEquipment.updateItem(this.editedEquipment).subscribe(data => {
+        this.loadItems();
+      });
+      this.editedEquipment = null;
+    }
+  }
+  saveWorkTask(){
+    if(this.isNewWorkTask) {
+      this.serviceOfWorkTask.createItem(this.editedWorkTask).subscribe(data => {
+        this.loadItems();
+      });
+      this.isNewWorkTask = false;
+      this.editedWorkTask = null;
+    } else {
+      this.serviceOfWorkTask.updateItem(this.editedWorkTask).subscribe(data => {
+        this.loadItems();
+      });
+      this.editedWorkTask = null;
+    }
   }
 }
