@@ -10,10 +10,10 @@ import { EquipmentComponent } from './equipments/equipment/equipment.component';
 import { WorkObjectComponent } from './workObjects/work-object/work-object.component';
 import { WorkObjectListComponent } from './workObjects/work-object-list/work-object-list.component';
 import { WorkObjectEditComponent } from './workObjects/work-object-edit/work-object-edit.component';
-import { WorkObjectDetailsComponent } from './workObjects/work-object-details/work-object-details.component';
 import { WorkTaskComponent } from './workTasks/work-task/work-task.component';
 import { WorkTaskListComponent } from './workTasks/work-task-list/work-task-list.component';
 import { WorkTaskEditComponent } from './workTasks/work-task-edit/work-task-edit.component';
+import { WorkObjectDetailsComponent } from './workObjectsDetails/work-object-details/work-object-details.component';
 
 const routes: Routes = [
   {
@@ -73,28 +73,12 @@ const routes: Routes = [
       {
         path: 'work-object-edit/:id',
         component: WorkObjectEditComponent
-      },
-      {
-        path: 'work-object-details/:id',
-        component: WorkObjectDetailsComponent/*,
-        children: [
-          {
-            path: 'workTasks',
-            component: WorkTaskComponent,
-            children:[
-              {
-                path: 'workTask-list',
-                component: WorkTaskListComponent
-              },
-              {
-                path: 'workTask-edit/:id',
-                component: WorkTaskEditComponent
-              }
-            ]
-          }
-        ]*/
       }
     ]
+  },
+  {
+    path: 'details',
+    component: WorkObjectDetailsComponent
   }
 ];
 
