@@ -12,6 +12,7 @@ export class EmployeeListComponent implements OnInit {
 
   workObjectId: number;
   items: Array<Employee>;
+  hasWorkObjecId: boolean; 
 
   constructor(private route: ActivatedRoute,
     private service: EmployeeService) {
@@ -20,18 +21,28 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.workObjectId = params['id']
+      this.workObjectId = params['id'];
     });
     if(this.workObjectId){
-      console.log('Список сотрудников на объекте ' + this.workObjectId)
+      this.hasWorkObjecId = true;
+    }
+    else{
+      this.hasWorkObjecId = false;
     }
     this.loadItems();
   }
 
   loadItems(){
-    this.service.getItems().subscribe((data: Employee[]) => {
-      this.items = data;  
-    });
+    if(this.hasWorkObjecId){
+      this.service.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
+        this.items = data;  
+      });
+    }
+    else{
+      this.service.getItems().subscribe((data: Employee[]) => {
+        this.items = data;  
+      });
+    }
   }
 
   delete(item: Employee) {
