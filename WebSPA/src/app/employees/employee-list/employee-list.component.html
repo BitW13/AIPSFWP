@@ -1,6 +1,11 @@
-<div class="container">
+<div class="container-fluid">
+  <div *ngIf="hasWorkObjecId">
+    <select class="custom-select">
+      <option *ngFor='let object of list' value="{{object.id}}">{{object.name}}</option>
+    </select>
+  </div>
   <div class="row">
-    <div class="card" style="width: 18rem;"
+    <div class="card col-xl-3 col-lg-4 col-md-4 col-xs-7 col-8" style="width: 18rem;"
     *ngFor = 'let item of items'>
       <img src="http://www.obltv.ru/upload/resize_cache/iblock/ea3/690_6900_1/cat.jpg" class="card-img-top">
       <div class="card-body">

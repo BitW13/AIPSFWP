@@ -1,4 +1,6 @@
+$global-margin: calc(100vw - 100%);
 .container-fluid{
   padding-left: 0px;
   padding-right: 0px;
+  margin-right: $global-margin;
 }

@@ -24,14 +24,15 @@ export class EquipmentEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id']
     });
-    this.service.getItem(this.item.id).subscribe((data: Equipment) => {
+    this.service.getItem(this.id).subscribe((data: Equipment) => {
       this.item = data;  
     });
   }
 
   edit(){
-    this.service.updateItem(this.item);
-    this.loadItem();
+    this.service.updateItem(this.item).subscribe((data: Equipment) => {
+      this.loadItem();  
+    });
   }
 
   cancel(){

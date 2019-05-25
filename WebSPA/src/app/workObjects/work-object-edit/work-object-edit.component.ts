@@ -24,14 +24,15 @@ export class WorkObjectEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id']
     });
-    this.service.getItem(this.item.id).subscribe((data: WorkObject) => {
+    this.service.getItem(this.id).subscribe((data: WorkObject) => {
       this.item = data;  
     });
   }
 
   edit(){
-    this.service.updateItem(this.item);
-    this.loadItem();
+    this.service.updateItem(this.item).subscribe((data: WorkObject) => {
+      this.loadItem();  
+    });
   }
 
   cancel(){

@@ -8,7 +8,7 @@ export class WorkTask{
 
         public description?: string,
 
-        public workObjectId?: string,
+        public workObjectId?: number,
 
         public employeeId?: number
     ) { }

@@ -24,10 +24,11 @@ import { WorkTaskService } from './workTasks/work-task.service';
 import { WorkObjectListComponent } from './workObjects/work-object-list/work-object-list.component';
 import { WorkObjectAddComponent } from './workObjects/work-object-add/work-object-add.component';
 import { WorkObjectEditComponent } from './workObjects/work-object-edit/work-object-edit.component';
-import { WorkObjectDetailsComponent } from './workObjects/work-object-details/work-object-details.component';
 import { WorkObjectService } from './workObjects/work-object.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
+import { WorkObjectDetailsNavbarComponent } from './workObjectsDetails/work-object-details-navbar/work-object-details-navbar.component';
+import { WorkObjectDetailsComponent } from './workObjectsDetails/work-object-details/work-object-details.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FormsModule }   from '@angular/forms';
     WorkObjectListComponent,
     WorkObjectAddComponent,
     WorkObjectEditComponent,
-    WorkObjectDetailsComponent
+    WorkObjectDetailsComponent,
+    WorkObjectDetailsNavbarComponent
   ],
   imports: [
     BrowserModule,

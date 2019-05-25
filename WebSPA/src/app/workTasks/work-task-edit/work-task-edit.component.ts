@@ -30,8 +30,9 @@ export class WorkTaskEditComponent implements OnInit {
   }
 
   edit(){
-    this.service.updateItem(this.item);
-    this.loadItem();
+    this.service.updateItem(this.item).subscribe((data: WorkTask) => {
+      this.loadItem();  
+    });
   }
 
   cancel(){

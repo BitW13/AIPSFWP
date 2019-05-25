@@ -7,7 +7,7 @@ import { WorkObject } from './models/workObject';
 })
 export class WorkObjectService {
 
-  private url = "http://localhost:64345/api/employees/";
+  private url = "https://aipsfwpwebapi20190523120052.azurewebsites.net/api/workobject/";
   
   constructor(private http: HttpClient) { }
 

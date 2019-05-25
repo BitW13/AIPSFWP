@@ -7,7 +7,7 @@ import { WorkTask } from './models/workTask';
 })
 export class WorkTaskService {
 
-  private url = "http://localhost:64345/api/employees/";
+  private url = "https://aipsfwpwebapi20190523120052.azurewebsites.net/api/worktask/";
   
   constructor(private http: HttpClient) { }
 
@@ -29,5 +29,9 @@ export class WorkTaskService {
   
   deleteItem(id: number){
     return this.http.delete(this.url + id);
+  }
+
+  getItemsByWorkObjectId(id: number){
+    return this.http.get(this.url + '/byworkobjectid/' + id);
   }
 }

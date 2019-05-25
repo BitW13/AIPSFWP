@@ -9,7 +9,7 @@ $color-add: rgba(24, 22, 22, 0.808);
 
   .row{
     .left-menu{
-      transition: left .5s ease-in-out;
+      // transition: left .5s ease-in-out;
       position: fixed;
       top: $margin-top;
       width: 32vmax;
@@ -18,16 +18,16 @@ $color-add: rgba(24, 22, 22, 0.808);
       height: 89.8vh;
       z-index: 1005;
       color: #fff;
-      padding: 1%;      
+      padding: 1%; 
       @include adaptive-top-top(3.5vh);
 
-      &-btn{
+      &-btn{        
         width: 30px;
         height: 30px;
         position: fixed;
         top: $margin-top + 2vh;
         left: 1vmax;
-        transition: left .5s ease-in-out;
+        // transition: left .5s ease-in-out;
         transform: rotate(0deg);
         cursor: pointer;
 

@@ -22,12 +22,12 @@ export class EquipmentAddComponent implements OnInit {
   }
 
   add(){
-    this.service.createItem(this.item);
-    this.loadItem();
+    this.service.createItem(this.item).subscribe((data: Equipment) => {
+      this.loadItem();  
+    });
   }
 
   cancel(){
     this.loadItem();
   }
-
 }
