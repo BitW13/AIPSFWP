@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../models/employee';
 import { ActivatedRoute } from '@angular/router';
+import { WorkObjectService } from 'src/app/workObjects/work-object.service';
+import { WorkObject } from 'src/app/workObjects/models/workObject';
 
 @Component({
   selector: 'app-employee-list',
@@ -13,10 +15,14 @@ export class EmployeeListComponent implements OnInit {
   workObjectId: number;
   items: Array<Employee>;
   hasWorkObjecId: boolean; 
+  
+  list: Array<WorkObject>;
 
   constructor(private route: ActivatedRoute,
-    private service: EmployeeService) {
+    private service: EmployeeService,
+    private workObjectservice: WorkObjectService) {
     this.items = new Array<Employee>();
+    this.list = new Array<WorkObject>();
   }
 
   ngOnInit() {
@@ -36,6 +42,9 @@ export class EmployeeListComponent implements OnInit {
     if(this.hasWorkObjecId){
       this.service.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
         this.items = data;  
+      });
+      this.workObjectservice.getItems().subscribe((data: WorkObject[]) => {
+        this.list = data;  
       });
     }
     else{
