@@ -1,4 +1,9 @@
 <div class="container">
+  <div *ngIf="hasWorkObjecId">
+    <select class="custom-select">
+      <option *ngFor='let object of list' value="{{object.id}}">{{object.name}}</option>
+    </select>
+  </div>
   <div class="row">
     <div class="card" style="width: 18rem;"
     *ngFor = 'let item of items'>
