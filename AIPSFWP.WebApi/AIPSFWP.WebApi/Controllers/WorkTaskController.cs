@@ -77,9 +77,9 @@ namespace AIPSFWP.WebApi.Controllers
 
             var workTask = await db.WorkTasks.CreateAsync(mapper.Map<WorkTask>(model));
 
-            model = mapper.Map<CreateWorkTaskViewModel>(workTask);
+            IndexEditWorkTaskViewModel newModel = mapper.Map<IndexEditWorkTaskViewModel>(workTask);
 
-            return Ok(model);
+            return Ok(newModel);
         }
 
         [HttpPut("{id}")]
@@ -111,7 +111,7 @@ namespace AIPSFWP.WebApi.Controllers
                 return BadRequest();
             }
 
-            await db.Employees.DeleteAsync(workTask.Id);
+            await db.WorkTasks.DeleteAsync(workTask.Id);
 
             var model = mapper.Map<IndexEditWorkTaskViewModel>(workTask);
 
