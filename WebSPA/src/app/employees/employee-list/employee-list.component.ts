@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmployeeListComponent implements OnInit {
 
-  workObjectId: number
+  workObjectId: number;
   items: Array<Employee>;
 
   constructor(private route: ActivatedRoute,

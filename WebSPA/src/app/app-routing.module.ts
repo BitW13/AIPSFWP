@@ -85,11 +85,11 @@ const routes: Routes = [
         component: EmployeeListComponent
       },
       {
-        path:'equipments',
+        path:'equipments/:id',
         component: EquipmentListComponent
       },
       {
-        path:'work-tasks',
+        path:'work-tasks/:id',
         component: WorkTaskListComponent
       }
     ]

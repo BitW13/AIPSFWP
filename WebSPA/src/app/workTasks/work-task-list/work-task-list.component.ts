@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkTask } from '../models/workTask';
 import { WorkTaskService } from '../work-task.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-work-task-list',
@@ -9,9 +10,11 @@ import { WorkTaskService } from '../work-task.service';
 })
 export class WorkTaskListComponent implements OnInit {
 
+  workObjectId: number;
   items: Array<WorkTask>;
 
-  constructor(private service: WorkTaskService) {
+  constructor(private route: ActivatedRoute,
+    private service: WorkTaskService) {
     this.items = new Array<WorkTask>();
   }
 
@@ -20,6 +23,12 @@ export class WorkTaskListComponent implements OnInit {
   }
 
   loadItems(){
+    this.route.params.subscribe(params => {
+      this.workObjectId = params['id']
+    });
+    if(this.workObjectId){
+      console.log('Список задач на объекте ' + this.workObjectId)
+    }
     this.service.getItems().subscribe((data: WorkTask[]) => {
       this.items = data;  
     });
