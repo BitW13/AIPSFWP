@@ -14,17 +14,12 @@ export class EmployeeListComponent implements OnInit {
 
   workObjectId: number;
   items: Array<Employee>;
-  hasWorkObjecId: boolean; 
-  
+
+  hasWorkObjecId: boolean;  
   list: Array<Employee>;
 
   constructor(private route: ActivatedRoute,
-<<<<<<< HEAD
     private service: EmployeeService) {
-=======
-    private service: EmployeeService,
-    private workObjectService: WorkObjectService) {
->>>>>>> ab837548e0034ef0e51676de67a1c0a2803b35aa
     this.items = new Array<Employee>();
     this.list = new Array<Employee>();
   }
@@ -47,11 +42,7 @@ export class EmployeeListComponent implements OnInit {
       this.service.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
         this.items = data;  
       });
-<<<<<<< HEAD
       this.service.getItems().subscribe((data: Employee[]) => {
-=======
-      this.workObjectService.getItems().subscribe((data: WorkObject[]) => {
->>>>>>> ab837548e0034ef0e51676de67a1c0a2803b35aa
         this.list = data;  
       });
     }

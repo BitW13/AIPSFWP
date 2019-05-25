@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Equipment } from '../models/equipment';
 import { EquipmentService } from '../equipment.service';
 import { ActivatedRoute } from '@angular/router';
-import { WorkObjectService } from 'src/app/workObjects/work-object.service';
 import { WorkObject } from 'src/app/workObjects/models/workObject';
 
 @Component({
@@ -14,13 +13,12 @@ export class EquipmentListComponent implements OnInit {
 
   workObjectId: number;
   items: Array<Equipment>;
-  hasWorkObjecId: boolean; 
 
-  list: Array<WorkObject>;
+  hasWorkObjecId: boolean; 
+  list: Array<Equipment>;
 
   constructor(private route: ActivatedRoute,
-    private service: EquipmentService,
-    private workObjectService: WorkObjectService) {
+    private service: EquipmentService) {
     this.items = new Array<Equipment>();
   }
 
@@ -42,7 +40,7 @@ export class EquipmentListComponent implements OnInit {
       this.service.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Equipment[]) => {
         this.items = data;  
       });
-      this.workObjectService.getItems().subscribe((data: WorkObject[]) => {
+      this.service.getItems().subscribe((data: WorkObject[]) => {
         this.list = data;  
       });
     }
