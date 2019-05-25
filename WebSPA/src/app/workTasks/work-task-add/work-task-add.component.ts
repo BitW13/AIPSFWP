@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WorkTask } from '../models/workTask';
 import { WorkTaskService } from '../work-task.service';
 
@@ -9,6 +9,7 @@ import { WorkTaskService } from '../work-task.service';
 })
 export class WorkTaskAddComponent implements OnInit {
 
+  @Input() workObjectId: number;
   item: WorkTask
 
   constructor(private service: WorkTaskService) { }
@@ -22,7 +23,7 @@ export class WorkTaskAddComponent implements OnInit {
   }
 
   add(){
-    this.item.workObjectId = 1;
+    this.item.workObjectId = this.workObjectId;
     this.service.createItem(this.item).subscribe((data: WorkTask) => {
       this.loadItem();  
     });

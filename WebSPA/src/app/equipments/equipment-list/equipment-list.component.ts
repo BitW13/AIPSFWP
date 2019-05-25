@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Equipment } from '../models/equipment';
 import { EquipmentService } from '../equipment.service';
 import { ActivatedRoute } from '@angular/router';
-import { WorkObject } from 'src/app/workObjects/models/workObject';
 
 @Component({
   selector: 'app-equipment-list',
@@ -40,8 +39,9 @@ export class EquipmentListComponent implements OnInit {
       this.service.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Equipment[]) => {
         this.items = data;  
       });
-      this.service.getItems().subscribe((data: WorkObject[]) => {
-        this.list = data;  
+      this.service.getItems().subscribe((data: Equipment[]) => {
+        this.list = data;
+        this.list = this.list.filter(i => i.workObjectId != this.workObjectId);  
       });
     }
     else{
@@ -57,4 +57,17 @@ export class EquipmentListComponent implements OnInit {
     });
   };
 
+  addToWorkObject(item: Equipment){
+    item.workObjectId = this.workObjectId;
+    this.service.updateItem(item).subscribe(data => {
+      this.loadItems();
+    });
+  };
+
+  deleteFromObject(item: Equipment){
+    item.workObjectId = null;
+    this.service.updateItem(item).subscribe(data => {
+      this.loadItems();
+    });
+  }
 }

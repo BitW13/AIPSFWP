@@ -14,6 +14,7 @@
               <p class="card-text">Логин сотрудника - {{item.login}}</p>
               <p class="card-text">Пароль сотрудника - {{item.login}}</p>
               <p class="card-text">Должность сотрудника - {{item.role}}</p>
+              <button class="btn btn-outline-warning" (click)="addToWorkObject(item)">Добавить</button>
             </div>
           </div>
         </div>
@@ -21,17 +22,32 @@
     </div>
   </div>
   <div class="row">
-    <div class="card" style="width: 18rem;"
-    *ngFor = 'let item of items'>
-      <img src="http://www.obltv.ru/upload/resize_cache/iblock/ea3/690_6900_1/cat.jpg" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">{{item.firstName}} {{item.middleName}} {{item.lastName}}</h5>
-        <p class="card-text">Логин сотрудника - {{item.login}}</p>
-        <p class="card-text">Пароль сотрудника - {{item.login}}</p>
-        <p class="card-text">Должность сотрудника - {{item.role}}</p>
-        <button class="btn btn-outline-warning" (click)="delete(item)">Удалить</button>
-        <a class="btn btn-primary" routerLink="/employees/employee-edit/{{item.id}}">Изменить</a>
+    <ng-template [ngIf]="hasWorkObjecId" [ngIfElse]="allItems">
+      <div class="card" style="width: 18rem;"
+        *ngFor = 'let item of items'>
+        <img src="http://www.obltv.ru/upload/resize_cache/iblock/ea3/690_6900_1/cat.jpg" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{item.firstName}} {{item.middleName}} {{item.lastName}}</h5>
+          <p class="card-text">Логин сотрудника - {{item.login}}</p>
+          <p class="card-text">Пароль сотрудника - {{item.login}}</p>
+          <p class="card-text">Должность сотрудника - {{item.role}}</p>
+          <button class="btn btn-outline-warning" (click)="deleteFromObject(item)">Удалить c объекта</button>
+        </div>
       </div>
-    </div>
+    </ng-template>
+    <ng-template #allItems>
+      <div class="card" style="width: 18rem;"
+        *ngFor = 'let item of items'>
+        <img src="http://www.obltv.ru/upload/resize_cache/iblock/ea3/690_6900_1/cat.jpg" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{item.firstName}} {{item.middleName}} {{item.lastName}}</h5>
+          <p class="card-text">Логин сотрудника - {{item.login}}</p>
+          <p class="card-text">Пароль сотрудника - {{item.login}}</p>
+          <p class="card-text">Должность сотрудника - {{item.role}}</p>
+          <button class="btn btn-outline-warning" (click)="delete(item)">Удалить</button>
+          <a class="btn btn-outline-primary" routerLink="/employees/employee-edit/{{item.id}}">Изменить</a>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>

@@ -6,7 +6,7 @@
       <div class="card-body">
         <h5 class="card-title">{{item.name}}</h5>
         <p class="card-text">{{item.description}}</p>
-        <a class="btn btn-outline-primary" routerLink="/workObjects/work-object-details/{{item.id}}">Подробнее</a>
+        <a class="btn btn-outline-primary" routerLink="/details/{{item.id}}/employees/{{item.id}}">Подробнее</a>
         <a class="btn btn-outline-primary" routerLink="/workObjects/work-object-edit/{{item.id}}">Изменить</a>
         <button class="btn btn-outline-danger" (click)="delete(item)">Удалить</button>
       </div>

@@ -90,7 +90,17 @@ const routes: Routes = [
       },
       {
         path:'work-tasks/:id',
-        component: WorkTaskListComponent
+        component: WorkTaskComponent,
+        children:[
+          {
+            path: 'work-task-list/:id',
+            component: WorkTaskListComponent
+          },
+          {
+            path: 'work-task-edit/:id',
+            component: WorkTaskEditComponent
+          }
+        ]
       }
     ]
   }
