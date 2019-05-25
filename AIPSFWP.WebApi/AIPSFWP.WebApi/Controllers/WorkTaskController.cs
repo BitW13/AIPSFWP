@@ -73,6 +73,7 @@ namespace AIPSFWP.WebApi.Controllers
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             var workTask = await db.WorkTasks.CreateAsync(mapper.Map<WorkTask>(model));
 
@@ -84,10 +85,16 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody]IndexEditEmployeeViewModel model)
         {
+            if(model == null)
+            {
+                return BadRequest();
+            }
+
             if (id != model.Id)
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             await db.WorkTasks.UpdateAsync(mapper.Map<WorkTask>(model));
 

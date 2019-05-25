@@ -53,6 +53,7 @@ namespace AIPSFWP.WebApi.Controllers
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             WorkObject workObject = mapper.Map<WorkObject>(model);
 
@@ -66,10 +67,15 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] IndexEditWorkObjectViewModel model)
         {
+            if(model == null)
+            {
+                return BadRequest();
+            }
             if (id != model.Id)
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             WorkObject workObject = mapper.Map<WorkObject>(model);
 

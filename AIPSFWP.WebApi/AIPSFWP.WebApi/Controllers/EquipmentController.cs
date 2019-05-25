@@ -94,6 +94,7 @@ namespace AIPSFWP.WebApi.Controllers
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             EquipmentData newEquipmentData = mapper.Map<EquipmentData>(model);
 
@@ -113,10 +114,15 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] IndexEditEquipmentViewModel model)
         {
+            if(model == null)
+            {
+                return BadRequest();
+            }
             if (id != model.Id)
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             Equipment equipment = mapper.Map<Equipment>(model);
             EquipmentData equipmentData = mapper.Map<EquipmentData>(model);

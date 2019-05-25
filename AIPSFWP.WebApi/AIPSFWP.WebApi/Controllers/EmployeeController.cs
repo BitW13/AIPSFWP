@@ -94,6 +94,7 @@ namespace AIPSFWP.WebApi.Controllers
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             EmployeeData newEmployeeData = mapper.Map<EmployeeData>(model);
 
@@ -113,10 +114,15 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] IndexEditEmployeeViewModel model)
         {
+            if(model == null)
+            {
+                return BadRequest();
+            }
             if (id != model.Id)
             {
                 return BadRequest();
             }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             Employee employee = mapper.Map<Employee>(model);
             EmployeeData employeeData = mapper.Map<EmployeeData>(model);
