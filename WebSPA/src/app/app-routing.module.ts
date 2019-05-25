@@ -77,8 +77,22 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'details',
-    component: WorkObjectDetailsComponent
+    path: 'details/:id',
+    component: WorkObjectDetailsComponent,
+    children: [
+      {
+        path:'employees/:id',
+        component: EmployeeListComponent
+      },
+      {
+        path:'equipments',
+        component: EquipmentListComponent
+      },
+      {
+        path:'work-tasks',
+        component: WorkTaskListComponent
+      }
+    ]
   }
 ];
 

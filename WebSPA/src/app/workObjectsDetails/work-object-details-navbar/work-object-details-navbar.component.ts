@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-work-object-details-navbar',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkObjectDetailsNavbarComponent implements OnInit {
 
+  @Input() workObjectId: number;
+
   constructor() { }
 
   ngOnInit() {
+    console.log('Список сотрудников на объекте в меню управления ' + this.workObjectId)
   }
 
 }
