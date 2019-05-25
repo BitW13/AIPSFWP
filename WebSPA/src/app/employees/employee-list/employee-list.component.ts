@@ -16,13 +16,12 @@ export class EmployeeListComponent implements OnInit {
   items: Array<Employee>;
   hasWorkObjecId: boolean; 
   
-  list: Array<WorkObject>;
+  list: Array<Employee>;
 
   constructor(private route: ActivatedRoute,
-    private service: EmployeeService,
-    private workObjectservice: WorkObjectService) {
+    private service: EmployeeService) {
     this.items = new Array<Employee>();
-    this.list = new Array<WorkObject>();
+    this.list = new Array<Employee>();
   }
 
   ngOnInit() {
@@ -43,7 +42,7 @@ export class EmployeeListComponent implements OnInit {
       this.service.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
         this.items = data;  
       });
-      this.workObjectservice.getItems().subscribe((data: WorkObject[]) => {
+      this.service.getItems().subscribe((data: Employee[]) => {
         this.list = data;  
       });
     }

@@ -1,8 +1,24 @@
 <div class="container">
   <div *ngIf="hasWorkObjecId">
-    <select class="custom-select">
-      <option *ngFor='let object of list' value="{{object.id}}">{{object.name}}</option>
-    </select>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Добавить сотрудника на объект
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div *ngFor='let item of list'>
+          <div class="card" style="width: 18rem;">
+            <img src="http://www.obltv.ru/upload/resize_cache/iblock/ea3/690_6900_1/cat.jpg" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{item.firstName}} {{item.middleName}} {{item.lastName}}</h5>
+              <p class="card-text">Логин сотрудника - {{item.login}}</p>
+              <p class="card-text">Пароль сотрудника - {{item.login}}</p>
+              <p class="card-text">Должность сотрудника - {{item.role}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="card" style="width: 18rem;"
