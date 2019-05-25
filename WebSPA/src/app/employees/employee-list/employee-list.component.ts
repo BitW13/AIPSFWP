@@ -20,7 +20,7 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private service: EmployeeService,
-    private workObjectservice: WorkObjectService) {
+    private workObjectService: WorkObjectService) {
     this.items = new Array<Employee>();
     this.list = new Array<WorkObject>();
   }
@@ -43,7 +43,7 @@ export class EmployeeListComponent implements OnInit {
       this.service.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
         this.items = data;  
       });
-      this.workObjectservice.getItems().subscribe((data: WorkObject[]) => {
+      this.workObjectService.getItems().subscribe((data: WorkObject[]) => {
         this.list = data;  
       });
     }
