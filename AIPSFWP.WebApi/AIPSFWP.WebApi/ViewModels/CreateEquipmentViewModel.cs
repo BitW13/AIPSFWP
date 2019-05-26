@@ -4,6 +4,7 @@ namespace AIPSFWP.WebApi.ViewModels
 {
     public class CreateEquipmentViewModel
     {
+        [Required]
         public string Name { get; set; }
 
         [Required]

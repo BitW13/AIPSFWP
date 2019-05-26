@@ -4,6 +4,7 @@ namespace AIPSFWP.WebApi.ViewModels
 {
     public class IndexEditEmployeeViewModel
     {
+        [Required]
         public int Id { get; set; }
 
         [Required]
