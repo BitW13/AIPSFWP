@@ -1,13 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AIPSFWP.BLL\AIPSFWP.BLL.csproj" />
-    <ProjectReference Include="..\AIPSFWP.Common\AIPSFWP.Common.csproj" />
-    <ProjectReference Include="..\AIPSFWP.DAL\AIPSFWP.DAL.csproj" />
-  </ItemGroup>
 
 </Project>
