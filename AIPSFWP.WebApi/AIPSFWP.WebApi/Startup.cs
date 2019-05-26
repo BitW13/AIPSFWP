@@ -8,11 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using AIPSFWP.DI;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using AutoMapper;
-using AIPSFWP.WebApi.AutoMapper;
 
 namespace AIPSFWP.WebApi
 {
@@ -28,13 +25,7 @@ namespace AIPSFWP.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperProfile>());
-
-            services.IoCCommonRegister(Configuration);
-            services.AddCors();
-            services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,13 +42,6 @@ namespace AIPSFWP.WebApi
             }
 
             app.UseHttpsRedirection();
-
-            app.UseCors(builder => builder
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials());
-
             app.UseMvc();
         }
     }
