@@ -11,10 +11,7 @@ import { WorkObjectComponent } from './workObjects/work-object/work-object.compo
 import { WorkObjectListComponent } from './workObjects/work-object-list/work-object-list.component';
 import { WorkObjectEditComponent } from './workObjects/work-object-edit/work-object-edit.component';
 import { WorkTaskComponent } from './workTasks/work-task/work-task.component';
-import { WorkTaskListComponent } from './workTasks/work-task-list/work-task-list.component';
-import { WorkTaskEditComponent } from './workTasks/work-task-edit/work-task-edit.component';
 import { WorkObjectDetailsComponent } from './workObjectsDetails/work-object-details/work-object-details.component';
-import { WorkTaskAddComponent } from './workTasks/work-task-add/work-task-add.component';
 
 const routes: Routes = [
   {
@@ -46,6 +43,20 @@ const routes: Routes = [
       {
         path: 'equipment-edit/:id',
         component: EquipmentEditComponent
+      }
+    ]
+  },
+  {
+    path: 'work-objects',
+    component: WorkObjectComponent,
+    children:[
+      {
+        path: 'work-object-list',
+        component: WorkObjectListComponent
+      },
+      {
+        path: 'work-object-edit/:id',
+        component: WorkObjectEditComponent
       }
     ]
   },
