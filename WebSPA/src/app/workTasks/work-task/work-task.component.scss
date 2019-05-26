@@ -1,8 +1,5 @@
 @import "../../employees/employee/employee.component.scss";
-.container-fluid{
-  .row{
-    .right-block{
-      margin-top: 0 !important;
-    }
-  }
+.name, .description {
+  font-weight: 500;
+  font-size: 1.1rem;
 }

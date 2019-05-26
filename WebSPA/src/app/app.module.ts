@@ -17,9 +17,6 @@ import { EquipmentService } from './equipments/equipment.service';
 import { EquipmentListComponent } from './equipments/equipment-list/equipment-list.component';
 import { EquipmentAddComponent } from './equipments/equipment-add/equipment-add.component';
 import { EquipmentEditComponent } from './equipments/equipment-edit/equipment-edit.component';
-import { WorkTaskListComponent } from './workTasks/work-task-list/work-task-list.component';
-import { WorkTaskEditComponent } from './workTasks/work-task-edit/work-task-edit.component';
-import { WorkTaskAddComponent } from './workTasks/work-task-add/work-task-add.component';
 import { WorkTaskService } from './workTasks/work-task.service';
 import { WorkObjectListComponent } from './workObjects/work-object-list/work-object-list.component';
 import { WorkObjectAddComponent } from './workObjects/work-object-add/work-object-add.component';
@@ -45,9 +42,6 @@ import { WorkObjectDetailsComponent } from './workObjectsDetails/work-object-det
     EquipmentListComponent,
     EquipmentAddComponent,
     EquipmentEditComponent,
-    WorkTaskListComponent,
-    WorkTaskEditComponent,
-    WorkTaskAddComponent,
     WorkObjectListComponent,
     WorkObjectAddComponent,
     WorkObjectEditComponent,
