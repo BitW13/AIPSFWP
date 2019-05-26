@@ -6,8 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AIPSFWP.BLL\AIPSFWP.BLL.csproj" />
+    <ProjectReference Include="..\AIPSFWP.Common\AIPSFWP.Common.csproj" />
+    <ProjectReference Include="..\AIPSFWP.DI\AIPSFWP.DI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AIPSFWP.BLL\AIPSFWP.BLL.csproj" />
   </ItemGroup>
 
 </Project>
