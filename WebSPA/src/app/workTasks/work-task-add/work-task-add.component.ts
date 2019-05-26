@@ -23,6 +23,7 @@ export class WorkTaskAddComponent implements OnInit {
   }
 
   add(){
+    console.log(this.workObjectId)
     this.item.workObjectId = this.workObjectId;
     this.service.createItem(this.item).subscribe((data: WorkTask) => {
       this.loadItem();  

@@ -1,4 +1,7 @@
 <div class="container">
+  <div>
+    <a class="btn btn-primary" routerLink="/details/{{workObjectId}}/work-task-add/{{workObjectId}}">Добавить</a>
+  </div>
   <div class="row">
     <div class="card" style="width: 18rem;"
     *ngFor = 'let item of items'>
@@ -7,7 +10,7 @@
         <h5 class="card-title">{{item.name}}</h5>
         <p class="card-text">{{item.description}}</p>
         <button class="btn btn-outline-warning" (click)="delete(item)">Удалить</button>
-        <a class="btn btn-primary" routerLink="/workTasks/workTask-edit/{{item.id}}">Изменить</a>
+        <a class="btn btn-primary" routerLink="/details/{{workObjectId}}/work-task-edit/{{workObjectId}}">Изменить</a>
       </div>
     </div>
   </div>

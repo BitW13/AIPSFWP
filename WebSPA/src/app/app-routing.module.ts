@@ -14,6 +14,7 @@ import { WorkTaskComponent } from './workTasks/work-task/work-task.component';
 import { WorkTaskListComponent } from './workTasks/work-task-list/work-task-list.component';
 import { WorkTaskEditComponent } from './workTasks/work-task-edit/work-task-edit.component';
 import { WorkObjectDetailsComponent } from './workObjectsDetails/work-object-details/work-object-details.component';
+import { WorkTaskAddComponent } from './workTasks/work-task-add/work-task-add.component';
 
 const routes: Routes = [
   {
@@ -49,34 +50,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'workTasks',
-    component: WorkTaskComponent,
-    children:[
-      {
-        path: 'work-task-list',
-        component: WorkTaskListComponent
-      },
-      {
-        path: 'work-task-edit/:id',
-        component: WorkTaskEditComponent
-      }
-    ]
-  },
-  {
-    path: 'workObjects',
-    component: WorkObjectComponent,
-    children: [
-      {
-        path: 'work-object-list',
-        component: WorkObjectListComponent
-      },
-      {
-        path: 'work-object-edit/:id',
-        component: WorkObjectEditComponent
-      }
-    ]
-  },
-  {
     path: 'details/:id',
     component: WorkObjectDetailsComponent,
     children: [
@@ -90,17 +63,7 @@ const routes: Routes = [
       },
       {
         path:'work-tasks/:id',
-        component: WorkTaskComponent,
-        children:[
-          {
-            path: 'work-task-list/:id',
-            component: WorkTaskListComponent
-          },
-          {
-            path: 'work-task-edit/:id',
-            component: WorkTaskEditComponent
-          }
-        ]
+        component: WorkTaskComponent
       }
     ]
   }
