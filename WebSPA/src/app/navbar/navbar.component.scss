@@ -36,6 +36,12 @@ $color: #d94f5c;
     z-index: 1002;
     position: relative;
 
+    @media (max-width: 600px) {
+      & {
+        display: none;
+      }
+    }
+
     @include worm;
   }
 
