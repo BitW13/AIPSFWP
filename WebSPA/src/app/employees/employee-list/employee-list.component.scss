@@ -25,7 +25,14 @@
         width: 100%;      
         .card{          
           margin: 1vmin 1vmin !important;
-          padding: 1vmin 1vmin !important;
+          padding: 2vmin 3vmin !important;
+          position: relative;
+
+          .only-btn{
+            position: absolute;
+            bottom: 2%;
+            left: 7%;
+          }
         }    
       }   
     }     
@@ -46,7 +53,14 @@
     }
     .card{
       margin: 1vmin 1vmin;
-      padding: 1vmin 1vmin;
+      padding: 2vmin 1vmin;
+      position: relative;
+
+      .only-btn{
+        position: absolute;
+        bottom: 2%;
+        left: 7%;
+      }
     }
   }
 }

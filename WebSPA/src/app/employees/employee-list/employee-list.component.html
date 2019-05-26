@@ -8,7 +8,7 @@
           <p class="card-text">Логин сотрудника - {{item.login}}</p>
           <p class="card-text">Пароль сотрудника - {{item.login}}</p>
           <p class="card-text">Должность сотрудника - {{item.role}}</p>
-          <button class="btn btn-outline-warning" (click)="addToWorkObject(item)">Добавить</button>
+          <button class="btn btn-primary only-btn" (click)="addToWorkObject(item)">Добавить</button>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
           <p class="card-text">Логин сотрудника - {{item.login}}</p>
           <p class="card-text">Пароль сотрудника - {{item.login}}</p>
           <p class="card-text">Должность сотрудника - {{item.role}}</p>
-          <button class="btn btn-outline-warning" (click)="deleteFromObject(item)">Удалить c объекта</button>
+          <button class="btn btn-primary only-btn" (click)="deleteFromObject(item)">Удалить c объекта</button>
         </div>
       </div>
     </ng-template>
@@ -43,8 +43,10 @@
           <p class="card-text">Логин сотрудника - {{item.login}}</p>
           <p class="card-text">Пароль сотрудника - {{item.login}}</p>
           <p class="card-text">Должность сотрудника - {{item.role}}</p>
-          <button class="btn btn-outline-warning" (click)="delete(item)">Удалить</button>
-          <a class="btn btn-outline-primary" routerLink="/employees/employee-edit/{{item.id}}">Изменить</a>
+          <div class="btn-group only-btn btn-group-md btn-group-block">
+            <a class="btn btn-primary" routerLink="/employees/employee-edit/{{item.id}}">Изменить</a>
+            <button class="btn btn-outline-primary" (click)="delete(item)">Удалить</button>
+          </div>
         </div>
       </div>
     </ng-template>

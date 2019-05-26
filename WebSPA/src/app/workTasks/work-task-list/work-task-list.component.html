@@ -6,8 +6,10 @@
       <div class="card-body">
         <h5 class="card-title">{{item.name}}</h5>
         <p class="card-text">{{item.description}}</p>
-        <a class="btn btn-primary" routerLink="/workTasks/workTask-edit/{{item.id}}">Изменить</a>
-        <button class="btn btn-outline-warning" (click)="delete(item)">Удалить</button>        
+        <div class="btn-group only-btn btn-group-md btn-group-block">
+            <a class="btn btn-primary" routerLink="/workTasks/workTask-edit/{{item.id}}">Изменить</a>
+            <button class="btn btn-outline-primary" (click)="delete(item)">Удалить</button>  
+        </div>              
       </div>
     </div>
   </div>

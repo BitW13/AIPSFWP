@@ -1,14 +1,17 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="card col-xl-3 col-lg-4 col-md-4 col-xs-7 col-8" style="width: 18rem;"
-    *ngFor = 'let item of items'>
-      <img src="https://avatars.mds.yandex.net/get-zen_doc/62917/pub_5c94a995cbbae312a039aa96_5c94f8b6bddee300b359e4f9/scale_600" class="card-img-top">
+    <div class="card col-xl-4 col-lg-5 col-md-6 col-xs-7 col-9" style="width: 18rem;" *ngFor='let item of items'>
+      <img
+        src="https://avatars.mds.yandex.net/get-zen_doc/62917/pub_5c94a995cbbae312a039aa96_5c94f8b6bddee300b359e4f9/scale_600"
+        class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{item.name}}</h5>
         <p class="card-text">{{item.description}}</p>
-        <a class="btn btn-outline-primary" routerLink="/details/{{item.id}}/employees/{{item.id}}">Подробнее</a>
-        <a class="btn btn-outline-primary" routerLink="/workObjects/work-object-edit/{{item.id}}">Изменить</a>
-        <button class="btn btn-outline-danger" (click)="delete(item)">Удалить</button>
+        <div class="btn-group only-btn btn-group-md btn-group-block">
+          <a class="btn btn-primary" routerLink="/details/{{item.id}}/employees/{{item.id}}">Подробнее</a>
+          <a class="btn btn-outline-primary" routerLink="/workObjects/work-object-edit/{{item.id}}">Изменить</a>
+          <button class="btn btn-outline-primary" (click)="delete(item)">Удалить</button>
+        </div>
       </div>
     </div>
   </div>
