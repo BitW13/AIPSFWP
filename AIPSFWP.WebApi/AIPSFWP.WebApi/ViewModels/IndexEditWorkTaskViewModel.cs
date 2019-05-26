@@ -16,7 +16,6 @@ namespace AIPSFWP.WebApi.ViewModels
         [Required]
         public int WorkObjectId { get; set; }
 
-        [Required]
         public int? EmployeeId { get; set; }
     }
 }
