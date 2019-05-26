@@ -1,18 +1,13 @@
-<div class="container">
-  <div *ngIf="hasWorkObjecId">
-    <select class="custom-select">
-      <option *ngFor='let object of list' value="{{object.id}}">{{object.name}}</option>
-    </select>
-  </div>
+<div class="container-fluid">
   <div class="row">
-    <div class="card" style="width: 18rem;"
+    <div class="card col-xl-3 col-lg-4 col-md-4 col-xs-7 col-8" style="width: 18rem;"
     *ngFor = 'let item of items'>
       <img src="https://tomatis-belarus.by/wp-content/uploads/2018/03/art-terapiya-dlya-beremennyh-4.jpg" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{item.name}}</h5>
         <p class="card-text">{{item.description}}</p>
-        <button class="btn btn-outline-warning" (click)="deleteItem(item)">Удалить</button>
         <a class="btn btn-primary" routerLink="/workTasks/workTask-edit/{{item.id}}">Изменить</a>
+        <button class="btn btn-outline-warning" (click)="delete(item)">Удалить</button>        
       </div>
     </div>
   </div>

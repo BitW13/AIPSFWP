@@ -1,1 +1,8 @@
 @import "../../employees/employee/employee.component.scss";
+.container-fluid{
+  .row{
+    .right-block{
+      margin-top: 0 !important;
+    }
+  }
+}

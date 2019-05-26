@@ -1,10 +1,15 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2">
+        <div class="test">
             <app-work-object-details-navbar [workObjectId]='workObjectId'></app-work-object-details-navbar>
-        </div>
-        <div class="col-10">
-            
+            <!-- <div class="left-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>                 
+            </div> -->
+        </div>    
+        <div class="w-100"></div>    
+        <div class="col right-block">            
             <router-outlet></router-outlet>
         </div>
     </div>

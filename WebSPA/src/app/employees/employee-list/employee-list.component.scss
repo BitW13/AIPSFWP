@@ -1,9 +1,49 @@
 .container-fluid{
-  width: 95vw;
+  width: 95vw;   
+
+  .drop {
+    position: absolute;
+    top: 0;
+    left: 2.5vw;
+    display: none;   
+
+    &.active{
+      background-color: rgba(24, 22, 22, 0.507);
+      display: flex;
+      z-index: 2000;
+      justify-content: center;
+      align-items: flex-start;
+      // width: 100vmax;
+      margin-right: calc(100vmax - 100%);
+
+      .krest{
+        display: inline-block;
+        margin: 1.5%;
+      }
+
+      .row {
+        width: 100%;      
+        .card{          
+          margin: 1vmin 1vmin !important;
+          padding: 1vmin 1vmin !important;
+        }    
+      }   
+    }     
+  }
+
   .row{
     justify-content: center !important;
     margin: 7px 0;    
 
+    .add-card{
+      text-align: center;
+
+      &:hover{
+        cursor: pointer;
+        border: 2px solid rgba(115, 181, 243, 0.89);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(115, 181, 243, 0.623);
+      }
+    }
     .card{
       margin: 1vmin 1vmin;
       padding: 1vmin 1vmin;

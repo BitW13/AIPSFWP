@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-work-task',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkTaskComponent implements OnInit {
 
-  constructor() { }
+  workObjectId: number;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.workObjectId = params['id'];
+    });
   }
-
 }

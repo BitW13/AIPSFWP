@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../models/employee';
 import { ActivatedRoute } from '@angular/router';
-import { WorkObjectService } from 'src/app/workObjects/work-object.service';
-import { WorkObject } from 'src/app/workObjects/models/workObject';
 
 @Component({
   selector: 'app-employee-list',
@@ -14,15 +12,14 @@ export class EmployeeListComponent implements OnInit {
 
   workObjectId: number;
   items: Array<Employee>;
-  hasWorkObjecId: boolean; 
-  
-  list: Array<WorkObject>;
+
+  hasWorkObjecId: boolean;  
+  list: Array<Employee>;
 
   constructor(private route: ActivatedRoute,
-    private service: EmployeeService,
-    private workObjectService: WorkObjectService) {
+    private service: EmployeeService) {
     this.items = new Array<Employee>();
-    this.list = new Array<WorkObject>();
+    this.list = new Array<Employee>();
   }
 
   ngOnInit() {
@@ -43,8 +40,9 @@ export class EmployeeListComponent implements OnInit {
       this.service.getItemsByWorkObjectId(this.workObjectId).subscribe((data: Employee[]) => {
         this.items = data;  
       });
-      this.workObjectService.getItems().subscribe((data: WorkObject[]) => {
-        this.list = data;  
+      this.service.getItems().subscribe((data: Employee[]) => {
+        this.list = data;
+        this.list = this.list.filter(i => i.workObjectId != this.workObjectId);
       });
     }
     else{
@@ -56,7 +54,21 @@ export class EmployeeListComponent implements OnInit {
 
   delete(item: Employee) {
     this.service.deleteItem(item.id).subscribe(data => {
-        this.loadItems();
+      this.loadItems();
     });
   };
+
+  addToWorkObject(item: Employee){
+    item.workObjectId = this.workObjectId;
+    this.service.updateItem(item).subscribe(data => {
+      this.loadItems();
+    });
+  };
+
+  deleteFromObject(item: Employee){
+    item.workObjectId = null;
+    this.service.updateItem(item).subscribe(data => {
+      this.loadItems();
+    });
+  }
 }

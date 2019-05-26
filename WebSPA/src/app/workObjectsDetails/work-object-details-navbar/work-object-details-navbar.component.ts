@@ -12,7 +12,6 @@ export class WorkObjectDetailsNavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('Список сотрудников на объекте в меню управления ' + this.workObjectId)
   }
 
 }
