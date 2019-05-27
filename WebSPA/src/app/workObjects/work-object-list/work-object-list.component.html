@@ -9,7 +9,7 @@
         <p class="card-text">{{item.description}}</p>
         <div class="btn-group only-btn btn-group-md btn-group-block">
           <a class="btn btn-primary" routerLink="/details/{{item.id}}/employees/{{item.id}}">Подробнее</a>
-          <a class="btn btn-outline-primary" routerLink="/workObjects/work-object-edit/{{item.id}}">Изменить</a>
+          <a class="btn btn-outline-primary" routerLink="/work-objects/work-object-edit/{{item.id}}">Изменить</a>
           <button class="btn btn-outline-primary" (click)="delete(item)">Удалить</button>
         </div>
       </div>
