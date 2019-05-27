@@ -17,7 +17,7 @@
 }
 
 @mixin adaptive-top-top($value) {
-  $i: 670px;
+  $i: 700px;
   $j: 1vh;
   @while $i > 190px {
     @media (max-height: $i) {
@@ -31,4 +31,8 @@
     }    
     $i: $i - 35px;    
   }
+}
+
+body{
+  width: 99%;
 }
