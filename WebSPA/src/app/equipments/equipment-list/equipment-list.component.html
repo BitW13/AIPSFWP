@@ -1,48 +1,57 @@
-<div class="container">
-  <div *ngIf="hasWorkObjecId">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Добавить оборудование на объект
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div *ngFor='let item of list'>
-          <div class="card" style="width: 18rem;">
-            <img src="https://img11.postila.ru/resize?w=660&src=%2Fdata%2F88%2F58%2Fcb%2F9b%2F8858cb9b026ed9d5864196f70c75af506f0ccbf88839b621487395c86e99e962.jpg" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">{{item.number}}</h5>
-              <p class="card-text">{{item.name}}</p>
-              <p class="card-text">{{item.description}}</p>
-              <button class="btn btn-outline-warning" (click)="addToWorkObject(item)">Добавить</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <ng-template [ngIf]="hasWorkObjecId" [ngIfElse]="allItems">
-      <div class="card" style="width: 18rem;"
-        *ngFor = 'let item of items'>
-        <img src="https://img11.postila.ru/resize?w=660&src=%2Fdata%2F88%2F58%2Fcb%2F9b%2F8858cb9b026ed9d5864196f70c75af506f0ccbf88839b621487395c86e99e962.jpg" class="card-img-top">
+<div class="container-fluid">
+  <div class="container-fluid drop">
+    <div class="row" *ngIf="hasWorkObjecId">
+      <div *ngFor='let item of list' class="card col-xl-3 col-lg-4 col-md-4 col-xs-7 col-8" style="width: 18rem;">
+        <img
+          src="https://img11.postila.ru/resize?w=660&src=%2Fdata%2F88%2F58%2Fcb%2F9b%2F8858cb9b026ed9d5864196f70c75af506f0ccbf88839b621487395c86e99e962.jpg"
+          class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">{{item.number}}</h5>
           <p class="card-text">{{item.name}}</p>
           <p class="card-text">{{item.description}}</p>
-          <button class="btn btn-outline-warning" (click)="deleteFromObject(item)">Удалить c объекта</button>
+          <button class="btn btn-primary only-btn" (click)="addToWorkObject(item)">Добавить</button>
+        </div>
+      </div>
+    </div>
+    <a href="javascript: void(0)" class="krest" onclick="toggleDrop()"><img
+        src="https://cdn.icon-icons.com/icons2/950/PNG/512/cross-symbol_icon-icons.com_74149.png" width="25px"
+        height="25px" alt="Krest"></a>
+  </div>
+
+
+  <div class="row">
+    <ng-template [ngIf]="hasWorkObjecId" [ngIfElse]="allItems">
+      <div class="card add-card col-xl-3 col-lg-4 col-md-4 col-xs-7 col-8" style="width: 18rem;" onclick="toggleDrop()">
+        <img src="https://forum.rudtp.ru/attachments/untitled-1-02-jpg.74832/" class="card-img-top">
+        <div class="card-body">
+          <h5>Добавить обородувание</h5>
+        </div>
+      </div>
+      <div class="card col-xl-3 col-lg-4 col-md-4 col-xs-7 col-8" style="width: 18rem;" *ngFor='let item of items'>
+        <img
+          src="https://img11.postila.ru/resize?w=660&src=%2Fdata%2F88%2F58%2Fcb%2F9b%2F8858cb9b026ed9d5864196f70c75af506f0ccbf88839b621487395c86e99e962.jpg"
+          class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{item.number}}</h5>
+          <p class="card-text">{{item.name}}</p>
+          <p class="card-text">{{item.description}}</p>
+          <button class="btn btn-primary only-btn" (click)="deleteFromObject(item)">Удалить c объекта</button>
         </div>
       </div>
     </ng-template>
     <ng-template #allItems>
-      <div class="card" style="width: 18rem;"
-        *ngFor = 'let item of items'>
-        <img src="https://img11.postila.ru/resize?w=660&src=%2Fdata%2F88%2F58%2Fcb%2F9b%2F8858cb9b026ed9d5864196f70c75af506f0ccbf88839b621487395c86e99e962.jpg" class="card-img-top">
+      <div class="card col-xl-3 col-lg-4 col-md-4 col-xs-7 col-8" style="width: 18rem;" *ngFor='let item of items'>
+        <img
+          src="https://img11.postila.ru/resize?w=660&src=%2Fdata%2F88%2F58%2Fcb%2F9b%2F8858cb9b026ed9d5864196f70c75af506f0ccbf88839b621487395c86e99e962.jpg"
+          class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">{{item.number}}</h5>
           <p class="card-text">{{item.name}}</p>
           <p class="card-text">{{item.description}}</p>
-          <button class="btn btn-outline-warning" (click)="delete(item)">Удалить</button>
-          <a class="btn btn-primary" routerLink="/equipments/equipment-edit/{{item.id}}">Изменить</a>
+          <div class="btn-group only-btn btn-group-md btn-group-block">
+            <a class="btn btn-primary" routerLink="/equipments/equipment-edit/{{item.id}}">Изменить</a>
+            <button class="btn btn-outline-primary" (click)="delete(item)">Удалить</button>
+          </div>
         </div>
       </div>
     </ng-template>
