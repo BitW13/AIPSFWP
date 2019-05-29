@@ -23,14 +23,6 @@ namespace AIPSFWP.WebApi.AutoMapper
                 .ReverseMap();
             CreateMap<WorkTask, CreateWorkTaskViewModel>()
                 .ReverseMap();
-            CreateMap<Equipment, CreateEquipmentViewModel>()
-                .ReverseMap();
-            CreateMap<EquipmentData, CreateEquipmentViewModel>()
-                .ReverseMap();
-            CreateMap<Equipment, IndexEditEquipmentViewModel>()
-                .ReverseMap();
-            CreateMap<EquipmentData, IndexEditEquipmentViewModel>()
-                .ReverseMap();
             CreateMap<WorkObject, IndexEditWorkObjectViewModel>()
                 .ReverseMap();
             CreateMap<WorkObject, CreateWorkObjectViewModel>()

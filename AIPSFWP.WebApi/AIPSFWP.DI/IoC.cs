@@ -38,20 +38,16 @@ namespace AIPSFWP.DI
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<IEmployeeDataRepository, EmployeeDataRepository>();
             services.AddTransient<IEquipmentRepository, EquipmentRepository>();
-            services.AddTransient<IEquipmentDataRepository, EquipmentDataRepository>();
             services.AddTransient<IWorkObjectRepository, WorkObjectRepository>();
             services.AddTransient<IWorkTaskRepository, WorkTaskRepository>();
-            services.AddTransient<IAdminRepository, AdminRepository>();
             services.AddTransient<ICompanyRepository, CompanyRepository>();
 
             services.AddTransient<IBusinessLogic, BusinessLogic>();
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IEmployeeDataService, EmployeeDataService>();
             services.AddTransient<IEquipmentService, EquipmentService>();
-            services.AddTransient<IEquipmentDataService, EquipmentDataService>();
             services.AddTransient<IWorkObjectService, WorkObjectService>();
             services.AddTransient<IWorkTaskService, WorkTaskService>();
-            services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<ICompanyService, CompanyService>();
 
             string connectionString = configuration.GetConnectionString("DefaultConnection");
