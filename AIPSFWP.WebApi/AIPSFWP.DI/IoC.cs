@@ -41,6 +41,8 @@ namespace AIPSFWP.DI
             services.AddTransient<IWorkObjectRepository, WorkObjectRepository>();
             services.AddTransient<IWorkTaskRepository, WorkTaskRepository>();
             services.AddTransient<ICompanyRepository, CompanyRepository>();
+            services.AddTransient<IManufacturerRepository, ManufacturerRepository>();
+            services.AddTransient<IOperationModeRepository, OperationModeRepository>();
 
             services.AddTransient<IBusinessLogic, BusinessLogic>();
             services.AddTransient<IEmployeeService, EmployeeService>();
@@ -49,6 +51,8 @@ namespace AIPSFWP.DI
             services.AddTransient<IWorkObjectService, WorkObjectService>();
             services.AddTransient<IWorkTaskService, WorkTaskService>();
             services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<IManufacturerService, ManufacturerService>();
+            services.AddTransient<IOperationModeService, OperationModeService>();
 
             string connectionString = configuration.GetConnectionString("DefaultConnection");
 

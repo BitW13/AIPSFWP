@@ -49,14 +49,19 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var workTask = await db.WorkTasks.GetItemByIdAsync(id);
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            WorkTask workTask = await db.WorkTasks.GetItemByIdAsync(id);
 
             if (workTask == null)
             {
                 return NotFound();
             }
 
-            var model = mapper.Map<IndexEditWorkTaskViewModel>(workTask);
+            IndexEditWorkTaskViewModel model = mapper.Map<IndexEditWorkTaskViewModel>(workTask);
 
             if (model == null)
             {
@@ -75,7 +80,7 @@ namespace AIPSFWP.WebApi.Controllers
             }
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
-            var workTask = await db.WorkTasks.CreateAsync(mapper.Map<WorkTask>(model));
+            WorkTask workTask = await db.WorkTasks.CreateAsync(mapper.Map<WorkTask>(model));
 
             IndexEditWorkTaskViewModel newModel = mapper.Map<IndexEditWorkTaskViewModel>(workTask);
 
@@ -104,7 +109,7 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var workTask = await db.WorkTasks.GetItemByIdAsync(id);
+            WorkTask workTask = await db.WorkTasks.GetItemByIdAsync(id);
 
             if (workTask == null)
             {
@@ -113,7 +118,7 @@ namespace AIPSFWP.WebApi.Controllers
 
             await db.WorkTasks.DeleteAsync(workTask.Id);
 
-            var model = mapper.Map<IndexEditWorkTaskViewModel>(workTask);
+            IndexEditWorkTaskViewModel model = mapper.Map<IndexEditWorkTaskViewModel>(workTask);
 
             return Ok(model);
         }

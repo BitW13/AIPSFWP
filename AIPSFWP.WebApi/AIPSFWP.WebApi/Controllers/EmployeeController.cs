@@ -35,7 +35,7 @@ namespace AIPSFWP.WebApi.Controllers
 
             foreach (var employee in employees)
             {
-                var employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
+                EmployeeData employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
 
                 models.Add(ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData));
             }
@@ -52,7 +52,7 @@ namespace AIPSFWP.WebApi.Controllers
 
             foreach (var employee in employees)
             {
-                var employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
+                EmployeeData employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
 
                 models.Add(ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData));
             }
@@ -63,21 +63,26 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var employee = await db.Employees.GetItemByIdAsync(id);
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            Employee employee = await db.Employees.GetItemByIdAsync(id);
 
             if (employee == null)
             {
                 return NotFound();
             }
 
-            var employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
+            EmployeeData employeeData = await db.EmployeesDatas.GetItemByIdAsync(employee.EmployeeDataId);
 
             if (employeeData == null)
             {
                 return NotFound();
             }
 
-            var model = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
+            IndexEditEmployeeViewModel model = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
 
             if (model == null)
             {
@@ -98,15 +103,15 @@ namespace AIPSFWP.WebApi.Controllers
 
             EmployeeData newEmployeeData = mapper.Map<EmployeeData>(model);
 
-            var employeeData = await db.EmployeesDatas.CreateAsync(newEmployeeData);
+            EmployeeData employeeData = await db.EmployeesDatas.CreateAsync(newEmployeeData);
 
             Employee newEmployee = mapper.Map<Employee>(model);
 
             newEmployee.EmployeeDataId = employeeData.Id;
 
-            var employee = await db.Employees.CreateAsync(newEmployee);
+            Employee employee = await db.Employees.CreateAsync(newEmployee);
 
-            var newModel = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
+            IndexEditEmployeeViewModel newModel = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
 
             return Ok(newModel);
         }
@@ -154,7 +159,7 @@ namespace AIPSFWP.WebApi.Controllers
 
             await db.Employees.DeleteAsync(employee.Id);
 
-            var model = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
+            IndexEditEmployeeViewModel model = ConvertEmployeeAndEmployeeDataToIndexViewModel(employee, employeeData);
 
             if (model == null)
             {

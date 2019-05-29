@@ -34,7 +34,12 @@ namespace AIPSFWP.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var workObject = await db.WorkObjects.GetItemByIdAsync(id);
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            WorkObject workObject = await db.WorkObjects.GetItemByIdAsync(id);
 
             if (workObject == null)
             {
