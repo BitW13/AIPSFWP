@@ -1,9 +1,14 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3">
-      <app-work-object-add></app-work-object-add>
+    <div class="left-menu">
+      <app-work-object-add class="add"></app-work-object-add>
+      <div class="left-menu-btn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>                 
+      </div>
     </div>
-    <div class="col-9">
+    <div class="col right-block">
       <router-outlet></router-outlet>
     </div>
   </div>

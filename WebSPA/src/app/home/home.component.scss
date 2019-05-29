@@ -1,0 +1,21 @@
+#carouselExampleCaptions{
+  ol{
+      position: fixed;
+  }
+
+  .carousel-control-prev, .carousel-control-next{
+      position: fixed;
+      z-index: 500;
+  }
+  .carousel-inner{
+      .carousel-item{
+          position: fixed;
+          top: 10.2vh;
+          z-index: -10;
+          img{
+              width: 100%;
+              height: 89.8vh !important;   
+          }
+      }
+  }
+}

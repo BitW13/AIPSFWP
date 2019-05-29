@@ -1,4 +1,4 @@
-<form>
+<form class="container">
   <div class="form-group">
     <label>Логин</label>
     <input class="form-control"
@@ -45,6 +45,8 @@
     [ngModelOptions]="{standalone: true}"
     [(value)]="item.lastName">
   </div>
-  <button class="btn btn-outline-success" (click)="add()">Добавить</button>
-  <button class="btn btn-outline-info" (click)="cancel()">Отмена</button>
+  <div class="btn-group btn-group-lg btn-group-block">
+      <button class="btn btn-success" (click)="add()">Добавить</button>
+      <button class="btn btn-outline-success" (click)="cancel()" onclick="toggleMenu()">Отмена</button>
+  </div>  
 </form>
