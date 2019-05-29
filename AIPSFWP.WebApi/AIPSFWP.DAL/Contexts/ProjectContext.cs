@@ -17,8 +17,6 @@ namespace AIPSFWP.DAL.Contexts
 
         public DbSet<Company> Companies { get; set; }
 
-        public DbSet<Admin> Admins { get; set; }
-
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<EmployeeData> EmployeesDatas { get; set; }
@@ -29,6 +27,8 @@ namespace AIPSFWP.DAL.Contexts
 
         public DbSet<Equipment> Equipments { get; set; }
 
-        public DbSet<EquipmentData> EquipmentDatas { get; set; }
+        public DbSet<Manufacturer> Manufacturers { get; set; }
+
+        public DbSet<OperationMode> OperationModes { get; set; }
     }
 }

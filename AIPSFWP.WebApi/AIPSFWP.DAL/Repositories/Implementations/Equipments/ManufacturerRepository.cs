@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace AIPSFWP.DAL.Repositories.Implementations.Equipments
 {
-    public class EquipmentDataRepository : IEquipmentDataRepository
+    public class ManufacturerRepository : IManufacturerRepository
     {
         private readonly ProjectContext db;
 
-        public EquipmentDataRepository(ProjectContext db)
+        public ManufacturerRepository(ProjectContext db)
         {
             this.db = db;
         }
 
-        public async Task<EquipmentData> CreateAsync(EquipmentData item)
+        public async Task<Manufacturer> CreateAsync(Manufacturer item)
         {
             if (item != null)
             {
-                db.EquipmentDatas.Add(item);
+                db.Manufacturers.Add(item);
 
                 await db.SaveChangesAsync();
 
@@ -30,33 +30,33 @@ namespace AIPSFWP.DAL.Repositories.Implementations.Equipments
             return null;
         }
 
-        public async Task<EquipmentData> DeleteAsync(int id)
+        public async Task<Manufacturer> DeleteAsync(int id)
         {
-            EquipmentData equipmentData = await db.EquipmentDatas.FindAsync(id);
+            Manufacturer manufacturer = await db.Manufacturers.FindAsync(id);
 
-            if (equipmentData != null)
+            if (manufacturer != null)
             {
-                db.EquipmentDatas.Remove(equipmentData);
+                db.Manufacturers.Remove(manufacturer);
 
                 await db.SaveChangesAsync();
 
-                return equipmentData;
+                return manufacturer;
             }
 
             return null;
         }
 
-        public async Task<IEnumerable<EquipmentData>> GetAllAsync()
+        public async Task<IEnumerable<Manufacturer>> GetAllAsync()
         {
-            return await db.EquipmentDatas.ToListAsync();
+            return await db.Manufacturers.ToListAsync();
         }
 
-        public async Task<EquipmentData> GetItemByIdAsync(int id)
+        public async Task<Manufacturer> GetItemByIdAsync(int id)
         {
-            return await db.EquipmentDatas.FindAsync(id);
+            return await db.Manufacturers.FindAsync(id);
         }
 
-        public async Task UpdateAsync(EquipmentData item)
+        public async Task UpdateAsync(Manufacturer item)
         {
             db.Entry(item).State = EntityState.Modified;
             await db.SaveChangesAsync();

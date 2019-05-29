@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AIPSFWP.Common.Entities.Equipments
 {
@@ -7,9 +8,26 @@ namespace AIPSFWP.Common.Entities.Equipments
         [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
-        public int EquipmentDataId { get; set; }
+        [Required]
+        public string FactoryNumber { get; set; }
+
+        [Required]
+        public string InventoryNumber { get; set; }
+
+        [Required]
+        public DateTime ManufactureDate { get; set; }
+
+        [Required]
+        public DateTime CertificationDate { get; set; }
+
+        [Required]
+        public int ManufacturerId { get; set; }
+
+        [Required]
+        public int OperationModeId { get; set; }
 
         public int? WorkObjectId { get; set; }
     }

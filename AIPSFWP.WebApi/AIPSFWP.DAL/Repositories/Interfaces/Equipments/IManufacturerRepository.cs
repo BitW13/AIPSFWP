@@ -2,7 +2,7 @@
 
 namespace AIPSFWP.DAL.Repositories.Interfaces.Equipments
 {
-    public interface IEquipmentDataRepository : IRepository<EquipmentData>
+    public interface IManufacturerRepository : IRepository<Manufacturer>
     {
     }
 }

@@ -1,8 +1,4 @@
-﻿using AIPSFWP.Common.Entities.Employees;
-using AIPSFWP.Common.Entities.Equipments;
-using AIPSFWP.Common.Entities.WorkObjects;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AIPSFWP.Common.Entities
 {
@@ -13,5 +9,11 @@ namespace AIPSFWP.Common.Entities
 
         [Required]
         public string Name { get; set; }
+
+        [Required]
+        public string Login { get; set; }
+
+        [Required]
+        public string Password { get; set; }
     }
 }
