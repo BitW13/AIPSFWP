@@ -10,18 +10,18 @@ namespace AIPSFWP.BLL.BusinessLogic
     {
         ICompanyService Companies { get; set; }
 
-        IAdminService Admins { get; set; }
-
         IEmployeeService Employees { get; set; }
 
         IEmployeeDataService EmployeesDatas { get; set; }
 
         IEquipmentService Equipments { get; set; }
 
-        IEquipmentDataService EquipmentsDatas { get; set; }
-
         IWorkObjectService WorkObjects { get; set; }
 
         IWorkTaskService WorkTasks { get; set; }
+
+        IManufacturerService Manufacturers { get; set; }
+
+        IOperationModeService OperationModes { get; set; }
     }
 }

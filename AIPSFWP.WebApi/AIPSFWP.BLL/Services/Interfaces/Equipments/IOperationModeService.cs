@@ -2,7 +2,7 @@
 
 namespace AIPSFWP.BLL.Services.Interfaces.Equipments
 {
-    public interface IEquipmentDataService : IService<EquipmentData>
+    public interface IOperationModeService : IService<OperationMode>
     {
     }
 }

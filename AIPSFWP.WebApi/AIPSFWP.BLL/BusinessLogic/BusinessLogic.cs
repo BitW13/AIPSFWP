@@ -9,27 +9,25 @@ namespace AIPSFWP.BLL.BusinessLogic
     public class BusinessLogic : IBusinessLogic
     {
         public BusinessLogic(ICompanyService companies,
-                             IAdminService admins,
                              IEmployeeService employees,
                              IEmployeeDataService employeesDatas,
                              IEquipmentService equipments,
-                             IEquipmentDataService equipmentsDatas,
                              IWorkObjectService workObjects,
-                             IWorkTaskService workTasks)
+                             IWorkTaskService workTasks,
+                             IManufacturerService manufacturers,
+                             IOperationModeService operationModes)
         {
             Companies = companies;
-            Admins = admins;
             Employees = employees;
             EmployeesDatas = employeesDatas;
             Equipments = equipments;
-            EquipmentsDatas = equipmentsDatas;
             WorkObjects = workObjects;
             WorkTasks = workTasks;
+            Manufacturers = manufacturers;
+            OperationModes = operationModes;
         }
 
         public ICompanyService Companies { get; set; }
-
-        public IAdminService Admins { get; set; }
 
         public IEmployeeService Employees { get; set; }
 
@@ -37,10 +35,10 @@ namespace AIPSFWP.BLL.BusinessLogic
 
         public IEquipmentService Equipments { get; set; }
 
-        public IEquipmentDataService EquipmentsDatas { get; set; }
-
         public IWorkObjectService WorkObjects { get; set; }
 
         public IWorkTaskService WorkTasks { get; set; }
+        public IManufacturerService Manufacturers { get; set; }
+        public IOperationModeService OperationModes { get; set; }
     }
 }
