@@ -9,27 +9,25 @@ namespace AIPSFWP.DAL.DataAccess
     public class DataAccess : IDataAccess
     {
         public DataAccess(ICompanyRepository companies,
-                          IAdminRepository admins,
                           IEmployeeRepository employees,
                           IEmployeeDataRepository employeesDatas,
                           IEquipmentRepository equipments,
-                          IEquipmentDataRepository equipmentsDatas,
                           IWorkObjectRepository workObjects,
-                          IWorkTaskRepository workTasks)
+                          IWorkTaskRepository workTasks,
+                          IManufacturerRepository manufacturers,
+                          IOperationModeRepository operationModes)
         {
             Companies = companies;
-            Admins = admins;
             Employees = employees;
             EmployeesDatas = employeesDatas;
             Equipments = equipments;
-            EquipmentsDatas = equipmentsDatas;
             WorkObjects = workObjects;
             WorkTasks = workTasks;
+            OperationModes = operationModes;
+            Manufacturers = manufacturers;
         }
 
         public ICompanyRepository Companies { get; set; }
-
-        public IAdminRepository Admins { get; set; }
 
         public IEmployeeRepository Employees { get; set; }
 
@@ -37,10 +35,10 @@ namespace AIPSFWP.DAL.DataAccess
 
         public IEquipmentRepository Equipments { get; set; }
 
-        public IEquipmentDataRepository EquipmentsDatas { get; set; }
-
         public IWorkObjectRepository WorkObjects { get; set; }
 
         public IWorkTaskRepository WorkTasks { get; set; }
+        public IOperationModeRepository OperationModes { get; set; }
+        public IManufacturerRepository Manufacturers { get; set; }
     }
 }

@@ -10,18 +10,18 @@ namespace AIPSFWP.DAL.DataAccess
     {
         ICompanyRepository Companies { get; set; }
 
-        IAdminRepository Admins { get; set; }
-
         IEmployeeRepository Employees { get; set; }
 
         IEmployeeDataRepository EmployeesDatas { get; set; }
 
         IEquipmentRepository Equipments { get; set; }
 
-        IEquipmentDataRepository EquipmentsDatas { get; set; }
-
         IWorkObjectRepository WorkObjects { get; set; }
 
         IWorkTaskRepository WorkTasks { get; set; }
+
+        IOperationModeRepository OperationModes { get; set; }
+
+        IManufacturerRepository Manufacturers { get; set; }
     }
 }
